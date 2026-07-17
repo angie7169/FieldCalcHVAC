@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC Field Guides &amp; Tutorials | FieldCalc HVAC</title>
+    <meta name="description" content="Free HVAC field guides and tutorials — R-454B PT charts, superheat/subcooling, duct sizing, load calculation, EPA 608 certification, refrigerant transition, and more.">
+    <meta name="keywords" content="hvac guides, hvac tutorials, hvac field guide, refrigerant guide, hvac blog">
+
+    <meta property="og:title" content="HVAC Field Guides & Tutorials | FieldCalc HVAC">
+    <meta property="og:description" content="Free guides on R-454B PT charts, superheat, duct sizing, load calculation, EPA 608, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_01_r454b.png">
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --cold-dark: #0E84C7;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+
+        .header {
+            text-align: center;
+            padding: 60px 24px 40px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(50,173,230,0.12), transparent 60%);
+        }
+        .header .logo {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--cold), var(--cold-dark));
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: 800; color: #051018;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 16px rgba(50,173,230,0.3);
+        }
+        .header h1 { font-size: 2rem; font-weight: 800; }
+        .header .subtitle { font-size: 1.05rem; color: var(--text2); margin-top: 8px; }
+        .header .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-top: 12px; }
+        .header .breadcrumb a { color: var(--cold); text-decoration: none; }
+
+        .container { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+        .section { margin-top: 40px; }
+        .section-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 20px;
+        }
+        .section-icon { font-size: 1.3rem; }
+        .section-title { font-size: 1.3rem; font-weight: 700; }
+        .section-desc { font-size: 0.88rem; color: var(--text3); margin-top: -8px; margin-bottom: 16px; margin-left: 32px; }
+
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+        .article-card {
+            display: block;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .article-card:hover { border-color: var(--cold); transform: translateY(-2px); }
+        .article-card .tag {
+            font-size: 0.68rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--cold);
+            margin-bottom: 8px;
+        }
+        .article-card.warm .tag { color: var(--warm); }
+        .article-card .title { font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.35; }
+        .article-card .desc { font-size: 0.85rem; color: var(--text3); margin-top: 6px; line-height: 1.5; }
+        .article-card .meta { font-size: 0.75rem; color: var(--text3); margin-top: 10px; }
+
+        .cta {
+            text-align: center;
+            margin-top: 60px;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--surface), var(--surface2));
+            border: 1px solid var(--cold);
+            border-radius: 16px;
+        }
+        .cta h2 { font-size: 1.3rem; font-weight: 700; }
+        .cta p { color: var(--text2); margin-top: 8px; margin-bottom: 18px; }
+        .cta-btn {
+            display: inline-block;
+            background: var(--cold); color: #051018;
+            font-weight: 700; font-size: 1rem;
+            padding: 14px 36px; border-radius: 12px; text-decoration: none;
+        }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">FC</div>
+        <h1>HVAC Field Guides &amp; Tutorials</h1>
+        <p class="subtitle">Free, practical guides for HVAC technicians — from R-454B PT charts to EPA 608 certification.</p>
+        <div class="breadcrumb"><a href="../index.html">Home</a> › Guides</div>
+    </div>
+
+    <div class="container">
+        <!-- Refrigerant & PT Charts -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🌡️</span>
+                <span class="section-title">Refrigerants &amp; PT Charts</span>
+            </div>
+            <p class="section-desc">Pressure-temperature data, refrigerant properties, and the R-410A → R-454B transition.</p>
+            <div class="article-grid">
+                <a class="article-card" href="r-454b-pt-chart.html">
+                    <div class="tag">Reference</div>
+                    <div class="title">R-454B PT Chart: Complete Guide</div>
+                    <div class="desc">Full pressure-temperature table with bubble and dew point values for R-454B.</div>
+                </a>
+                <a class="article-card" href="r-454b-vs-r-410a.html">
+                    <div class="tag">Comparison</div>
+                    <div class="title">R-454B vs R-410A: Full Comparison</div>
+                    <div class="desc">Pressures, GWP, safety class, glide, and what changes for field techs.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Charge Verification -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🔧</span>
+                <span class="section-title">Charge Verification</span>
+            </div>
+            <p class="section-desc">Superheat and subcooling — the two most important field measurements for refrigerant charge.</p>
+            <div class="article-grid">
+                <a class="article-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">Step-by-step guide with formula, targets, and diagnosis.</div>
+                </a>
+                <a class="article-card" href="how-to-check-subcooling.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Subcooling</div>
+                    <div class="desc">Complete procedure with the bubble-point rule for R-454B.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- System Design -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📐</span>
+                <span class="section-title">System Design &amp; Sizing</span>
+            </div>
+            <p class="section-desc">Load calculation, duct sizing, and psychrometrics for equipment selection and airflow.</p>
+            <div class="article-grid">
+                <a class="article-card" href="duct-sizing-calculator.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">Duct Sizing Calculator</div>
+                    <div class="desc">Equal friction method with velocity checks and rectangular equivalents.</div>
+                </a>
+                <a class="article-card" href="hvac-load-calculation.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">HVAC Load Calculation: Manual J</div>
+                    <div class="desc">Simplified cooling load with BTU/sqft factors and unit sizing in tons.</div>
+                </a>
+                <a class="article-card" href="psychrometric-chart.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">Psychrometric Chart Explained</div>
+                    <div class="desc">Dew point, wet bulb, enthalpy, humidity ratio — all six air properties.</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- More guides coming -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📚</span>
+                <span class="section-title">More Guides Coming Soon</span>
+            </div>
+            <p class="section-desc">We're adding new articles every week. Topics in progress:</p>
+            <div class="article-grid">
+                <div class="article-card" style="opacity: 0.5;">
+                    <div class="tag" style="color: var(--warm);">Coming Soon</div>
+                    <div class="title">AC Not Cooling? 10 Common Causes</div>
+                    <div class="desc">Troubleshooting guide for the most common AC problems.</div>
+                </div>
+                <div class="article-card" style="opacity: 0.5;">
+                    <div class="tag" style="color: var(--warm);">Coming Soon</div>
+                    <div class="title">What Size AC Do I Need?</div>
+                    <div class="desc">BTU sizing guide for residential and light commercial.</div>
+                </div>
+                <div class="article-card" style="opacity: 0.5;">
+                    <div class="tag" style="color: var(--warm);">Coming Soon</div>
+                    <div class="title">EPA AIM Act &amp; R-410A Phase-Out</div>
+                    <div class="desc">What the refrigerant transition means for HVAC techs.</div>
+                </div>
+                <div class="article-card" style="opacity: 0.5;">
+                    <div class="tag" style="color: var(--warm);">Coming Soon</div>
+                    <div class="title">How to Read Manifold Gauges</div>
+                    <div class="desc">Beginner's guide to reading high and low side pressures.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>📱 All these calculators in one app</h2>
+            <p>FieldCalc HVAC puts every guide's calculations in your pocket — PT charts, superheat, duct sizing, load estimate, psychrometrics. 100% offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../support.html">Support</a> · <a href="../eula.html">EULA</a></p>
+        <p style="margin-top: 8px;">Not affiliated with ASHRAE or ACCA.</p>
+    </div>
+</body>
+</html>
