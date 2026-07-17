@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duct Sizing Calculator: Equal Friction Method Explained (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Complete guide to HVAC duct sizing using the equal friction method. Learn the formula, friction rates, velocity limits, and how to size round and rectangular ducts per ASHRAE Fundamentals.">
+    <meta name="keywords" content="duct sizing calculator, duct sizing, equal friction method, hvac duct calculator, round duct sizing, rectangular duct, friction rate, manual d">
+
+    <meta property="og:title" content="Duct Sizing Calculator: Equal Friction Method Explained">
+    <meta property="og:description" content="Complete duct sizing guide — equal friction method, friction rates, velocity limits, round and rectangular ducts.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/duct-sizing-calculator.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_03_duct.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Duct Sizing Calculator: Equal Friction Method Explained",
+      "description": "Complete guide to HVAC duct sizing using the equal friction method, including formulas, friction rates, velocity limits, and round/rectangular duct sizing.",
+      "author": { "@type": "Organization", "name": "JNPRD" },
+      "publisher": { "@type": "Organization", "name": "FieldCalc HVAC" },
+      "datePublished": "2026-07-17",
+      "dateModified": "2026-07-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What friction rate should I use for duct sizing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The most common friction rate for residential duct design is 0.08 inWG per 100 feet. Commercial systems often use 0.08-0.10 inWG/100ft for main ducts and up to 0.15 for branches. Always check local codes and ACCA Manual D for specific project requirements." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the equal friction method?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The equal friction method sizes ducts so that the pressure loss per unit length is constant throughout the system. It uses the ASHRAE friction relationship to solve for duct diameter from airflow (CFM) and friction rate. It is the standard residential duct sizing method in ACCA Manual D." }
+        },
+        {
+          "@type": "Question",
+          "name": "What velocity should HVAC ducts be sized for?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Main supply ducts typically run 800-1200 FPM, branch ducts 600-900 FPM, and return ducts 700-900 FPM. Velocities above 1200 FPM risk noise; below 600 FPM risks poor distribution and dust settling. Always verify velocity after sizing by diameter." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert a round duct to rectangular?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use the equivalent diameter formula: D_eq = 1.30 × (a×b)^0.625 / (a+b)^0.25, where a and b are the rectangular sides. This gives the round duct that has the same friction loss as the rectangular duct. FieldCalc HVAC does this calculation automatically." }
+        }
+      ]
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .formula-box { background: var(--surface); border: 1px solid var(--cold); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+        .formula-box .formula { font-family: 'SF Mono', Monaco, monospace; font-size: 1.15rem; color: var(--cold); font-weight: 600; }
+        .formula-box .note { font-size: 0.82rem; color: var(--text3); margin-top: 10px; margin-bottom: 0; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+        tr:hover td { background: var(--surface); }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 24px 0; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
+        .info-card .label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 1.3rem; font-weight: 700; color: var(--cold); }
+        .info-card .sub { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+
+        .example-box { background: var(--surface); border-left: 4px solid var(--ok); border-radius: 8px; padding: 20px; margin: 24px 0; }
+        .example-box h3 { margin-top: 0; color: var(--ok); }
+        .example-box .calc { font-family: 'SF Mono', Monaco, monospace; font-size: 0.92rem; color: var(--text); background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 10px; line-height: 1.8; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › Duct Sizing Calculator
+        </div>
+
+        <h1>Duct Sizing Calculator: Equal Friction Method Explained</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+
+        <p class="lead">Proper duct sizing keeps a system quiet, efficient, and balanced. Undersized ducts cause noise and high static pressure; oversized ducts waste material and let dust settle. This guide covers the equal friction method — the standard approach in <strong>ACCA Manual D</strong> and <strong>ASHRAE Fundamentals</strong> — including the formulas, typical friction rates, velocity limits, and how to convert round ducts to rectangular.</p>
+
+        <h2>The Equal Friction Method</h2>
+        <p>The equal friction method sizes ducts so that the <strong>pressure loss per 100 feet is constant</strong> throughout the system. You specify an airflow (CFM) and a target friction rate (inWG/100ft), then solve for the duct diameter that meets both constraints.</p>
+
+        <p>It's the most common residential duct sizing method because it's simple, works well for trunk-and-branch layouts, and is the basis of ACCA Manual D.</p>
+
+        <h2>The Core Formula</h2>
+        <p>The ASHRAE friction relationship (a form of the Darcy-Weisbach equation in HVAC field units) solves for duct diameter from airflow and friction rate:</p>
+
+        <div class="formula-box">
+            <div class="formula">d = (0.109136 × Q<sup>1.9</sup> / ΔP)<sup>1/5.02</sup></div>
+            <p class="note">d = duct diameter (inches) · Q = airflow (CFM) · ΔP = friction loss (inWG / 100 ft)</p>
+        </div>
+
+        <p>Once you have the diameter, you compute cross-sectional area and velocity to confirm it's within an acceptable range.</p>
+
+        <div class="formula-box">
+            <div class="formula">V = Q / A × 144</div>
+            <p class="note">V = velocity (FPM) · Q = airflow (CFM) · A = area (in²) · 144 = in² per ft²</p>
+        </div>
+
+        <h2>Typical Friction Rates</h2>
+        <p>The friction rate you choose sets the trade-off between duct size and static pressure. Lower friction = larger ducts but quieter operation.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Application</th><th>Friction Rate (inWG/100ft)</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Residential (standard)</td><td>0.08</td><td>Most common. ACCA Manual D default.</td></tr>
+                    <tr><td>Residential (quiet)</td><td>0.05-0.06</td><td>Larger ducts, lower noise.</td></tr>
+                    <tr><td>Commercial main</td><td>0.08-0.10</td><td>Balances size and static.</td></tr>
+                    <tr><td>Commercial branch</td><td>0.10-0.15</td><td>Shorter runs tolerate higher friction.</td></tr>
+                    <tr><td>Industrial / high-static</td><td>0.15-0.20</td><td>Only when fan capacity allows.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Velocity Limits by Duct Type</h2>
+        <p>After sizing by friction, always verify velocity. Too high = noise; too low = poor distribution and dust accumulation.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">Main Supply</div>
+                <div class="value">800-1200</div>
+                <div class="sub">FPM</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Branch Supply</div>
+                <div class="value">600-900</div>
+                <div class="sub">FPM</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Return Air</div>
+                <div class="value">700-900</div>
+                <div class="sub">FPM</div>
+            </div>
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ Velocity check is mandatory:</strong> A duct that satisfies the friction equation can still be too small if airflow is high. Always compute velocity after diameter and confirm it's within range. Velocity above 1500 FPM is almost always too noisy for occupied spaces.</p>
+        </div>
+
+        <h2>Worked Example: Round Duct Sizing</h2>
+        <div class="example-box">
+            <h3>Example</h3>
+            <p>Size a main supply duct for <strong>400 CFM</strong> at a friction rate of <strong>0.08 inWG/100ft</strong>.</p>
+            <div class="calc">
+Step 1 — Diameter:<br>
+numerator = 0.109136 × 400<sup>1.9</sup> = 0.109136 × 108,636 ≈ 11,856<br>
+d = (11,856 / 0.08)<sup>1/5.02</sup> = (148,200)<sup>0.1992</sup> ≈ 10.8 inches<br><br>
+Step 2 — Round up to standard size: <strong>11 inches</strong><br><br>
+Step 3 — Area at 11": A = π × (11/2)² ≈ 95.0 in²<br><br>
+Step 4 — Velocity: V = 400 / 95.0 × 144 ≈ <strong>606 FPM</strong><br><br>
+Result: 11" round duct, 606 FPM — within main supply range ✓
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Skip the math on the roof</h3>
+            <p>FieldCalc HVAC sizes round and rectangular ducts instantly — enter CFM and friction rate, get diameter, area, and velocity with a pass/fail check. Works 100% offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>Rectangular Ducts: Equivalent Diameter</h2>
+        <p>Sometimes you can't fit a round duct in the available space. You need a rectangular duct (a × b) that provides the same friction loss as the calculated round diameter. Use the equivalent diameter formula:</p>
+
+        <div class="formula-box">
+            <div class="formula">D<sub>eq</sub> = 1.30 × (a × b)<sup>0.625</sup> / (a + b)<sup>0.25</sup></div>
+            <p class="note">D_eq = equivalent round diameter (inches) · a, b = rectangular sides (inches)</p>
+        </div>
+
+        <p>In practice, you know one side (a, limited by the cavity) and the target equivalent diameter (D_eq from the round calc). You solve for the other side (b). This is typically done by iteration — or by an app that does it for you.</p>
+
+        <h3>Example: Rectangular Equivalent</h3>
+        <div class="example-box">
+            <h3>Example</h3>
+            <p>You calculated a round equivalent of <strong>11 inches</strong>. The available cavity depth is <strong>8 inches</strong>. Find side b.</p>
+            <div class="calc">
+Solve: 11 = 1.30 × (8 × b)<sup>0.625</sup> / (8 + b)<sup>0.25</sup><br><br>
+By iteration (or app): b ≈ <strong>14 inches</strong><br><br>
+Result: 8" × 14" rectangular duct ≈ 11" round equivalent ✓
+            </div>
+        </div>
+
+        <h2>Standard Duct Sizes (Inches)</h2>
+        <p>Calculated diameters are always rounded up to the nearest standard size. Common round duct sizes:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Diameter</th><th>Typical Max CFM (at 0.08 friction)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>4"</td><td>~30 CFM (branch)</td></tr>
+                    <tr><td>6"</td><td>~75 CFM (branch)</td></tr>
+                    <tr><td>8"</td><td>~160 CFM (branch/small main)</td></tr>
+                    <tr><td>10"</td><td>~280 CFM (main)</td></tr>
+                    <tr><td>12"</td><td>~440 CFM (main)</td></tr>
+                    <tr><td>14"</td><td>~640 CFM (main)</td></tr>
+                    <tr><td>16"</td><td>~900 CFM (main)</td></tr>
+                    <tr><td>20"</td><td>~1,500 CFM (large main)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text3);">Approximate values at 0.08 inWG/100ft friction. Always verify with the formula for your exact conditions.</p>
+
+        <h2>Common Duct Sizing Mistakes</h2>
+        <ul>
+            <li><strong>Undersizing returns</strong> — restrictive returns cause high static, noise, and low airflow. Size returns at least as generously as supplies.</li>
+            <li><strong>Ignoring velocity</strong> — a duct can satisfy friction but be too small at high CFM. Always check FPM.</li>
+            <li><strong>Too many fittings without equivalent length</strong> — elbows, transitions, and takeoffs add pressure drop. ACCA Manual D includes equivalent length tables.</li>
+            <li><strong>Using flex like rigid</strong> — flex duct has ~50% higher friction than sheet metal when fully extended. Account for it.</li>
+            <li><strong>Not rounding up</strong> — always go to the next standard size. Smaller = more friction = less airflow.</li>
+        </ul>
+
+        <div class="warning">
+            <p><strong>⚠️ Manual D is more than sizing:</strong> This guide covers the sizing math. Full ACCA Manual D includes equivalent lengths for fittings, static pressure budgeting, and blower selection. For critical designs, use Manual D-compliant software or consult a designer.</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>What friction rate should I use?</h3>
+            <p>0.08 inWG/100ft is the residential standard (ACCA Manual D default). Commercial often uses 0.08-0.10 for mains and up to 0.15 for branches. Always check local codes.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the equal friction method?</h3>
+            <p>It sizes ducts so pressure loss per 100 feet is constant throughout the system. You specify CFM and friction rate, then solve for diameter using the ASHRAE friction relationship.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What velocity should HVAC ducts be sized for?</h3>
+            <p>Main supply: 800-1200 FPM. Branch: 600-900 FPM. Return: 700-900 FPM. Above 1200 FPM risks noise; below 600 FPM risks poor distribution and dust settling.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I convert round to rectangular duct?</h3>
+            <p>Use the equivalent diameter formula: D_eq = 1.30 × (a×b)^0.625 / (a+b)^0.25. Given one side and the target round diameter, solve for the other side.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does flex duct size the same as sheet metal?</h3>
+            <p>No. Fully extended flex duct has roughly 50% higher friction loss than smooth sheet metal. Always account for the material when sizing — a flex duct may need to be one size larger than the equivalent rigid duct.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Size ducts instantly in the field</h3>
+            <p>FieldCalc HVAC handles round and rectangular duct sizing, velocity checks, and equivalent diameter conversions automatically. No formulas, no iteration — just enter CFM and friction rate.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Data Sources</h2>
+        <ul>
+            <li>ASHRAE Handbook — Fundamentals, Duct Design chapter</li>
+            <li>ACCA Manual D — Residential Duct Systems</li>
+            <li>SMACNA HVAC Duct Construction Standards</li>
+            <li>ADI Engineering duct friction calculator methodology</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text3);">Not affiliated with ASHRAE, ACCA, or SMACNA. Field reference only — follow OEM specifications and local codes.</p>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">Verify charge after duct sizing affects airflow.</div>
+                </a>
+                <a class="related-card" href="how-to-check-subcooling.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Subcooling</div>
+                    <div class="desc">Companion charge verification on TXV systems.</div>
+                </a>
+                <a class="related-card" href="r-454b-pt-chart.html">
+                    <div class="tag">Reference</div>
+                    <div class="title">R-454B PT Chart</div>
+                    <div class="desc">Full pressure-temperature data for the new refrigerant.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="how-to-check-superheat.html">Superheat</a> · <a href="../privacy.html">Privacy</a></p>
+            <p style="margin-top: 8px;">Not affiliated with ASHRAE, ACCA, or SMACNA. Field reference only.</p>
+        </div>
+    </article>
+</body>
+</html>
