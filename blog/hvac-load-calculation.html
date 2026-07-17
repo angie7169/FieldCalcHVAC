@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HVAC Load Calculation: Manual J Simplified (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Complete guide to HVAC cooling load calculation using Manual J methodology. Learn the BTU/sqft method, climate factors, and how to size AC units for residential systems.">
+    <meta name="keywords" content="hvac load calculation, manual j, cooling load, btu calculator, hvac load estimate, ton sizing, residential load calculation">
+
+    <meta property="og:title" content="HVAC Load Calculation: Manual J Simplified">
+    <meta property="og:description" content="Step-by-step cooling load calculation using Manual J methodology — BTU/sqft, climate factors, unit sizing.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/hvac-load-calculation.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_05_load.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "HVAC Load Calculation: Manual J Simplified",
+      "description": "Complete guide to HVAC cooling load calculation using Manual J methodology, including BTU/sqft factors, climate corrections, and unit sizing.",
+      "author": { "@type": "Organization", "name": "JNPRD" },
+      "publisher": { "@type": "Organization", "name": "FieldCalc HVAC" },
+      "datePublished": "2026-07-17",
+      "dateModified": "2026-07-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many BTUs per square foot do I need for cooling?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typical cooling load ranges from 20 BTU/sqft (cool climate, good insulation) to 35 BTU/sqft (hot climate, top floor, poor insulation). Mild climates average 25 BTU/sqft. These are simplified estimates — full Manual J requires detailed envelope data." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many BTUs is one ton of cooling?",
+          "acceptedAnswer": { "@type": "Answer", "text": "One ton of cooling equals 12,000 BTU/h. To convert total load to tons, divide BTU/h by 12,000. For example, 36,000 BTU/h = 3 tons." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Manual J?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Manual J is the ACCA (Air Conditioning Contractors of America) standard for residential load calculation. It considers envelope U-values, windows, infiltration, internal loads, and climate. Full Manual J is performed by authorized software like Wrightsoft or Rhvac. FieldCalc HVAC uses a simplified Manual J methodology for quick field estimates." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a full Manual J calculation?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. This simplified method uses area-based BTU/sqft factors with corrections for windows, occupants, and infiltration. It is for quick field estimates only. For code compliance and equipment selection, a full Manual J by certified software is required." }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .formula-box { background: var(--surface); border: 1px solid var(--warm); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+        .formula-box .formula { font-family: 'SF Mono', Monaco, monospace; font-size: 1.15rem; color: var(--warm); font-weight: 600; }
+        .formula-box .note { font-size: 0.82rem; color: var(--text3); margin-top: 10px; margin-bottom: 0; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+
+        .example-box { background: var(--surface); border-left: 4px solid var(--ok); border-radius: 8px; padding: 20px; margin: 24px 0; }
+        .example-box h3 { margin-top: 0; color: var(--ok); }
+        .example-box .calc { font-family: 'SF Mono', Monaco, monospace; font-size: 0.92rem; color: var(--text); background: var(--bg); padding: 12px; border-radius: 8px; margin-top: 10px; line-height: 1.8; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › HVAC Load Calculation
+        </div>
+
+        <h1>HVAC Load Calculation: Manual J Simplified</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+
+        <p class="lead">Sizing an AC unit correctly requires a cooling load calculation — how much heat the space gains on a design day. Undersized units can't keep up; oversized units short-cycle, dehumidify poorly, and waste energy. This guide walks through the <strong>simplified Manual J methodology</strong> for quick field estimates: the BTU/sqft method, climate corrections, and unit sizing in tons.</p>
+
+        <h2>What is a Cooling Load Calculation?</h2>
+        <p>A cooling load calculation estimates the total heat that must be removed from a space to maintain a target indoor temperature on a design (worst-case) day. It accounts for:</p>
+        <ul>
+            <li><strong>Envelope heat gain</strong> — walls, roof, floor, windows</li>
+            <li><strong>Solar gain</strong> — sunlight through glass</li>
+            <li><strong>Internal loads</strong> — people, lights, appliances</li>
+            <li><strong>Infiltration</strong> — outdoor air leaking in</li>
+            <li><strong>Ventilation</strong> — outdoor air brought in intentionally</li>
+        </ul>
+
+        <p>The industry standard for residential load calc is <strong>ACCA Manual J</strong>, performed by authorized software (Wrightsoft, Rhvac, Cool Calc). This guide uses a <strong>simplified area-based method</strong> suitable for field estimates.</p>
+
+        <div class="warning">
+            <p><strong>⚠️ Important:</strong> This simplified method is for quick field estimates only. It is NOT a substitute for full Manual J. For code compliance, equipment selection, and permit drawings, a certified Manual J calculation is required.</p>
+        </div>
+
+        <h2>The Simplified Method: BTU per Square Foot</h2>
+        <p>The fastest field method multiplies conditioned floor area by a BTU/sqft factor, then applies corrections for windows, people, equipment, and infiltration.</p>
+
+        <div class="formula-box">
+            <div class="formula">Q<sub>total</sub> = (Area × Factor + Additions) × Insulation Credit</div>
+            <p class="note">Q_total = total cooling load (BTU/h) · Area = conditioned sqft · Factor = climate-based BTU/sqft</p>
+        </div>
+
+        <h2>BTU/sqft Factors by Climate</h2>
+        <p>The base factor depends on climate, orientation, and exposure:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Climate / Exposure</th><th>BTU/sqft</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cool climate, north-facing, well-shaded</td><td>20</td><td>Pacific Northwest, basement</td></tr>
+                    <tr><td>Mild climate, average exposure</td><td>25</td><td>Mid-Atlantic, ground floor</td></tr>
+                    <tr><td>Hot climate, west-facing</td><td>30</td><td>Southeast US, afternoon sun</td></tr>
+                    <tr><td>Top floor / hot climate / poor insulation</td><td>35</td><td>Southwest, attic conversion</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Additions: Windows, People, Equipment, Infiltration</h2>
+        <p>After the base load, add heat gains from specific sources:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Source</th><th>Addition</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Each standard window (solar gain)</td><td>+1,000 BTU/h</td><td>Single/double pane, west-facing worst</td></tr>
+                    <tr><td>Each person (sensible)</td><td>+400 BTU/h</td><td>Adult, sedentary activity</td></tr>
+                    <tr><td>Each major appliance</td><td>+500 BTU/h</td><td>Refrigerator, oven, TV, computer</td></tr>
+                    <tr><td>Infiltration (ACH × volume × ΔT)</td><td>Variable</td><td>0.5 ACH typical; older homes higher</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Insulation Credit</h2>
+        <p>Modern homes with R-30 roof and R-13 wall insulation get a <strong>0.85 multiplier</strong> (15% reduction). Older homes with poor insulation use 1.0 (no credit).</p>
+
+        <div class="formula-box">
+            <div class="formula">Q<sub>final</sub> = Subtotal × 0.85</div>
+            <p class="note">0.85 = insulation credit for R-30 roof / R-13 walls</p>
+        </div>
+
+        <h2>Converting BTU/h to Tons</h2>
+        <p>AC capacity is rated in tons. One ton = 12,000 BTU/h.</p>
+
+        <div class="formula-box">
+            <div class="formula">Tons = Q<sub>final</sub> ÷ 12,000</div>
+            <p class="note">Round up to the nearest standard unit size (1.5, 2, 2.5, 3, 3.5, 4, 5 ton)</p>
+        </div>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <h3>Example: 1,800 sqft home in hot climate</h3>
+            <div class="calc">
+Given: 1,800 sqft, hot west-facing climate (30 BTU/sqft),
+8 windows, 4 occupants, 3 appliances, R-30/R-13 insulation.
+
+Step 1 — Base load:<br>
+1,800 × 30 = 54,000 BTU/h<br><br>
+Step 2 — Additions:<br>
+Windows: 8 × 1,000 = 8,000<br>
+People: 4 × 400 = 1,600<br>
+Appliances: 3 × 500 = 1,500<br>
+Subtotal additions: 11,100 BTU/h<br><br>
+Step 3 — Subtotal:<br>
+54,000 + 11,100 = 65,100 BTU/h<br><br>
+Step 4 — Insulation credit:<br>
+65,100 × 0.85 = 55,335 BTU/h<br><br>
+Step 5 — Convert to tons:<br>
+55,335 ÷ 12,000 = 4.6 tons<br><br>
+Result: <strong>5-ton unit</strong> (round up to next standard size)
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Run the numbers instantly</h3>
+            <p>FieldCalc HVAC does the full load estimate in seconds — enter area, climate, windows, people, appliances. Get BTU/h, tons, and recommended unit size. Works offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>Why Proper Sizing Matters</h2>
+
+        <h3>Oversized Units (too many tons)</h3>
+        <ul>
+            <li><strong>Short cycling</strong> — cools too fast, shuts off, turns back on. Wear on compressor.</li>
+            <li><strong>Poor dehumidification</strong> — run time too short to pull moisture out of the air</li>
+            <li><strong>Higher cost</strong> — bigger equipment costs more to buy and run</li>
+            <li><strong>Drafty / uncomfortable</strong> — cold blasts then warm periods</li>
+        </ul>
+
+        <h3>Undersized Units (too few tons)</h3>
+        <ul>
+            <li><strong>Can't keep up</strong> on hot days — indoor temp rises above setpoint</li>
+            <li><strong>Runs constantly</strong> — high energy bills, premature wear</li>
+            <li><strong>Dehumidifies well</strong> but can't reach temperature</li>
+        </ul>
+
+        <h2>Sensible vs Total Load</h2>
+        <p>This simplified method calculates <strong>sensible load</strong> (temperature reduction). Total cooling load also includes <strong>latent load</strong> (moisture removal). In humid climates, latent load can add 20-30% to the total. For field estimates, the 0.85 insulation credit provides a rough buffer. Full Manual J separates sensible and latent explicitly using indoor wet bulb temperature.</p>
+
+        <p>For more on moisture and air properties, see our guide on the <a href="psychrometric-chart.html" style="color:var(--cold)">psychrometric chart</a>.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How many BTUs per square foot do I need?</h3>
+            <p>Typical range: 20 BTU/sqft (cool climate) to 35 BTU/sqft (hot, top floor). Mild climates average 25. These are simplified — full Manual J needs envelope data.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many BTUs is one ton of cooling?</h3>
+            <p>One ton = 12,000 BTU/h. Divide total BTU/h by 12,000 to get tons. For example, 36,000 BTU/h = 3 tons.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is Manual J?</h3>
+            <p>ACCA's residential load calculation standard. It considers envelope U-values, windows, infiltration, internal loads, and climate. Full Manual J requires certified software like Wrightsoft or Rhvac.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this a full Manual J calculation?</h3>
+            <p>No. This simplified method uses area-based BTU/sqft with corrections. For code compliance and equipment selection, full Manual J by certified software is required.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Should I round up or down when selecting a unit?</h3>
+            <p>Generally round to the nearest standard size. If between two sizes (e.g., 2.6 tons), consult OEM guidance — sometimes the smaller unit is preferred to avoid oversizing. Never round up two full sizes; that guarantees oversizing.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Estimate loads in the field</h3>
+            <p>FieldCalc HVAC runs the full simplified Manual J calc with visual breakdown bar. Enter area and climate, get BTU/h, tons, and recommended unit size — all offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Data Sources &amp; Disclaimer</h2>
+        <ul>
+            <li>ACCA Manual J — Residential Load Calculation (methodology reference)</li>
+            <li>ASHRAE Handbook — Fundamentals, Residential Cooling Load</li>
+            <li>DOE Building America — Field load estimation guidelines</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text3);">This guide uses simplified Manual J methodology. FieldCalc HVAC is not affiliated with or endorsed by ACCA or ASHRAE. Always perform full Manual J for equipment selection and code compliance.</p>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="duct-sizing-calculator.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">Duct Sizing Calculator</div>
+                    <div class="desc">After load calc, size the ductwork to deliver the CFM.</div>
+                </a>
+                <a class="related-card" href="psychrometric-chart.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">Psychrometric Chart Explained</div>
+                    <div class="desc">Sensible vs latent load — the moisture side of cooling.</div>
+                </a>
+                <a class="related-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">Verify charge after sizing and installing equipment.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="duct-sizing-calculator.html">Duct Sizing</a> · <a href="../privacy.html">Privacy</a></p>
+            <p style="margin-top: 8px;">Not affiliated with ACCA or ASHRAE. Field reference only.</p>
+        </div>
+    </article>
+</body>
+</html>

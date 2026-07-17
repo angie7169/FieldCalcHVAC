@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychrometric Chart Explained for HVAC Techs (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Complete guide to the psychrometric chart for HVAC technicians. Learn dew point, wet bulb, enthalpy, humidity ratio, and how to read air properties for field diagnosis.">
+    <meta name="keywords" content="psychrometric chart, psychrometrics, dew point, wet bulb temperature, enthalpy, humidity ratio, hvac air properties">
+
+    <meta property="og:title" content="Psychrometric Chart Explained for HVAC Techs">
+    <meta property="og:description" content="Complete guide to psychrometrics — dew point, wet bulb, enthalpy, humidity ratio, and how to read air properties.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/psychrometric-chart.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_04_home.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Psychrometric Chart Explained for HVAC Techs",
+      "description": "Complete guide to psychrometrics — dew point, wet bulb, enthalpy, humidity ratio, and how to read the psychrometric chart.",
+      "author": { "@type": "Organization", "name": "JNPRD" },
+      "publisher": { "@type": "Organization", "name": "FieldCalc HVAC" },
+      "datePublished": "2026-07-17",
+      "dateModified": "2026-07-17"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a psychrometric chart?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A psychrometric chart is a graphical representation of the thermodynamic properties of moist air. It plots dry bulb temperature (horizontal axis) against humidity ratio (vertical axis), with curved lines showing relative humidity, wet bulb, dew point, and enthalpy. HVAC techs use it to determine air properties and analyze cooling/heating processes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between dry bulb and wet bulb temperature?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dry bulb is the actual air temperature measured by a standard thermometer. Wet bulb is the temperature read by a thermometer wrapped in a wet wick exposed to airflow — it measures the cooling effect of evaporation. When wet bulb equals dry bulb, the air is fully saturated (100% RH)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is dew point temperature?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dew point is the temperature at which moisture starts to condense out of the air (RH reaches 100%). Below dew point, water vapor becomes liquid. In HVAC, dew point determines if condensation will form on ducts, coils, or surfaces — and how much dehumidification a cooling coil provides." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is enthalpy in HVAC?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Enthalpy (h) is the total heat content of air, measured in BTU per pound of dry air (or kJ/kg). It combines sensible heat (temperature) and latent heat (moisture). HVAC techs use enthalpy to calculate total cooling load — the difference between return air and supply air enthalpy times airflow gives total coil capacity." }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .formula-box { background: var(--surface); border: 1px solid var(--cold); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+        .formula-box .formula { font-family: 'SF Mono', Monaco, monospace; font-size: 1.1rem; color: var(--cold); font-weight: 600; }
+        .formula-box .note { font-size: 0.82rem; color: var(--text3); margin-top: 10px; margin-bottom: 0; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+
+        .property-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .property-card h3 { margin-top: 0; color: var(--cold); font-size: 1.05rem; }
+        .property-card .symbol { display: inline-block; background: var(--bg); padding: 2px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: var(--warm); margin-left: 8px; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › Psychrometric Chart
+        </div>
+
+        <h1>Psychrometric Chart Explained for HVAC Techs</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 9 min read</div>
+
+        <p class="lead">The psychrometric chart looks intimidating, but it's just a map of moist air properties. Once you learn to read it, you can determine dew point, wet bulb, enthalpy, and humidity ratio from two measurements — and diagnose dehumidification problems, coil performance, and total cooling capacity. This guide breaks down every line on the chart and what it means in the field.</p>
+
+        <h2>What is a Psychrometric Chart?</h2>
+        <p>A psychrometric chart is a <strong>graphical representation of the thermodynamic properties of moist air</strong>. It plots:</p>
+        <ul>
+            <li><strong>Dry bulb temperature</strong> on the horizontal axis (left to right: cold to hot)</li>
+            <li><strong>Humidity ratio</strong> on the vertical axis (bottom to top: dry to humid)</li>
+            <li>Curved lines for relative humidity, wet bulb, enthalpy, and specific volume</li>
+        </ul>
+        <p>Any point on the chart represents a specific air state. From that one point, you can read every other property.</p>
+
+        <div class="formula-box">
+            <div class="formula">Two known properties → every other property</div>
+            <p class="note">Typical field inputs: dry bulb temp + relative humidity (or wet bulb)</p>
+        </div>
+
+        <h2>The Six Key Air Properties</h2>
+
+        <div class="property-card">
+            <h3>1. Dry Bulb Temperature <span class="symbol">DB / T</span></h3>
+            <p>The actual air temperature measured by a standard thermometer. This is the horizontal axis on the chart. It's the "sensible" temperature — what you feel and what your thermostat reads.</p>
+        </div>
+
+        <div class="property-card">
+            <h3>2. Wet Bulb Temperature <span class="symbol">WB / T_w</span></h3>
+            <p>The lowest temperature air can reach by evaporation alone. Measured with a thermometer wrapped in a wet wick exposed to airflow. On the chart, wet bulb lines run diagonally from upper-left to lower-right. <strong>When WB = DB, the air is fully saturated (100% RH).</strong></p>
+            <p>Field use: Wet bulb determines the target superheat on fixed-orifice systems and measures evaporative cooling performance.</p>
+        </div>
+
+        <div class="property-card">
+            <h3>3. Dew Point Temperature <span class="symbol">DP / T_dp</span></h3>
+            <p>The temperature at which moisture begins to condense out of the air (RH hits 100%). Below dew point, water vapor turns to liquid. On the chart, follow the horizontal humidity ratio line left until it meets the saturation curve — that's dew point.</p>
+            <p>Field use: If a duct surface is below the air's dew point, condensation forms. Sweating ducts = surface below dew point. Sizing dehumidification equipment depends on hitting a target dew point.</p>
+        </div>
+
+        <div class="property-card">
+            <h3>4. Relative Humidity <span class="symbol">RH / φ</span></h3>
+            <p>The ratio of actual water vapor in the air to the maximum it can hold at that temperature, expressed as a percentage. Curved lines on the chart, with the outermost curve being 100% (saturation). Warm air holds more moisture — so the same humidity ratio at higher temperature = lower RH.</p>
+        </div>
+
+        <div class="property-card">
+            <h3>5. Humidity Ratio <span class="symbol">W / HR</span></h3>
+            <p>The actual mass of water vapor per mass of dry air (lb/lb or kg/kg). This is the vertical axis on the chart. Unlike RH, humidity ratio doesn't change with temperature — it only changes when moisture is added or removed. Also called "specific humidity" or "mixing ratio."</p>
+        </div>
+
+        <div class="property-card">
+            <h3>6. Enthalpy <span class="symbol">h</span></h3>
+            <p>The total heat content of air per unit mass of dry air (BTU/lb or kJ/kg). It combines sensible heat (from temperature) and latent heat (from moisture). On the chart, enthalpy lines run nearly parallel to wet bulb lines. <strong>Enthalpy difference × airflow = total coil capacity.</strong></p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Read air properties without the chart</h3>
+            <p>FieldCalc HVAC calculates all six psychrometric properties instantly from dry bulb + RH. Includes a mini psychrometric chart with the state point plotted. Works offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>The Formulas Behind the Chart</h2>
+        <p>These are the ASHRAE Fundamentals (Ch.1) equations the chart is built from:</p>
+
+        <h3>Saturation Pressure (Magnus approximation)</h3>
+        <div class="formula-box">
+            <div class="formula">e_s = 0.6108 × exp(17.27 × T / (T + 237.3))</div>
+            <p class="note">e_s in kPa, T in °C</p>
+        </div>
+
+        <h3>Humidity Ratio</h3>
+        <div class="formula-box">
+            <div class="formula">W = 0.622 × e / (P_atm − e)</div>
+            <p class="note">W in kg/kg, e = vapor pressure, P_atm = atmospheric pressure</p>
+        </div>
+
+        <h3>Enthalpy</h3>
+        <div class="formula-box">
+            <div class="formula">h = 1.006 × T + W × (2501 + 1.86 × T)</div>
+            <p class="note">h in kJ/kg dry air, T in °C</p>
+        </div>
+
+        <h3>Dew Point (inverse Magnus)</h3>
+        <div class="formula-box">
+            <div class="formula">T_dp = 237.3 × ln(e/0.6108) / (17.27 − ln(e/0.6108))</div>
+            <p class="note">T_dp in °C, e in kPa</p>
+        </div>
+
+        <h2>Using the Chart for Cooling Coil Analysis</h2>
+        <p>The psychrometric chart visualizes what happens when air passes through an evaporator coil:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Process</th><th>Direction on Chart</th><th>What Happens</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Sensible cooling</td><td>Left (horizontal)</td><td>Temperature drops, humidity ratio constant</td></tr>
+                    <tr><td>Latent cooling (dehumidification)</td><td>Down (vertical)</td><td>Moisture removed, temperature constant</td></tr>
+                    <tr><td>Total cooling (real coil)</td><td>Diagonal down-left</td><td>Both temperature and moisture drop</td></tr>
+                    <tr><td>Heating</td><td>Right (horizontal)</td><td>Temperature rises, RH drops</td></tr>
+                    <tr><td>Humidification</td><td>Up (vertical)</td><td>Moisture added, temperature may drop (evap)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The angle of the "total cooling" line tells you the <strong>Sensible Heat Ratio (SHR)</strong> — how much of the coil's work goes to temperature reduction vs. moisture removal. Low SHR (steeper line) means more dehumidification. High SHR (flatter line) means mostly sensible cooling.</p>
+
+        <h2>Why This Matters in the Field</h2>
+        <ul>
+            <li><strong>Dehumidification diagnosis</strong> — if a space is cool but clammy, check the coil's process on the chart. The coil may be oversized (sensible only, no latent removal).</li>
+            <li><strong>Duct sweating</strong> — compare duct surface temp to air dew point. If surface < dew point, insulate or raise air temp.</li>
+            <li><strong>Total capacity check</strong> — measure return and supply wet bulb, look up enthalpy, multiply by CFM. Compare to equipment rating.</li>
+            <li><strong>Charge verification</strong> — target superheat on fixed-orifice systems uses indoor wet bulb.</li>
+        </ul>
+
+        <p>For the charge verification procedures that depend on these air properties, see our guides on <a href="how-to-check-superheat.html" style="color:var(--cold)">checking superheat</a> and <a href="how-to-check-subcooling.html" style="color:var(--cold)">checking subcooling</a>.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>What is a psychrometric chart?</h3>
+            <p>A graphical representation of moist air properties. It plots dry bulb (horizontal) vs humidity ratio (vertical), with curves for RH, wet bulb, dew point, and enthalpy. HVAC techs use it to determine air properties and analyze cooling/heating processes.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between dry bulb and wet bulb?</h3>
+            <p>Dry bulb is actual air temperature. Wet bulb is the temperature with evaporative cooling — measured by a wet-wick thermometer. When WB = DB, air is fully saturated (100% RH).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is dew point temperature?</h3>
+            <p>The temperature at which moisture condenses out of air (RH reaches 100%). Below dew point, water vapor becomes liquid. It determines condensation on ducts, coils, and surfaces.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is enthalpy in HVAC?</h3>
+            <p>Total heat content of air (BTU/lb or kJ/kg), combining sensible (temperature) and latent (moisture) heat. Enthalpy difference × airflow = total coil capacity.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the humidity ratio?</h3>
+            <p>Mass of water vapor per mass of dry air (lb/lb). Unlike relative humidity, it doesn't change with temperature — only when moisture is added or removed. Also called specific humidity.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 All six properties in your pocket</h3>
+            <p>FieldCalc HVAC calculates dew point, wet bulb, enthalpy, humidity ratio, vapor pressure, and saturation pressure instantly from dry bulb + RH. Includes a mini psychrometric chart.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Data Sources</h2>
+        <ul>
+            <li>ASHRAE Handbook — Fundamentals, Chapter 1: Psychrometrics</li>
+            <li>Stull, R. (2011) — Wet-Bulb Temperature from Relative Humidity and Air Temperature (Stull approximation)</li>
+            <li>Magnus formula — Tetens' approximation for saturation vapor pressure</li>
+            <li>NIST Reference Fluid Properties (Refprop)</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text3);">Not affiliated with ASHRAE. Formulas are standard thermodynamic equations from ASHRAE Fundamentals. Field reference only.</p>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="hvac-load-calculation.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">HVAC Load Calculation</div>
+                    <div class="desc">Sensible vs latent load — the moisture side of cooling capacity.</div>
+                </a>
+                <a class="related-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">Target superheat uses indoor wet bulb on fixed-orifice systems.</div>
+                </a>
+                <a class="related-card" href="duct-sizing-calculator.html">
+                    <div class="tag">Guide</div>
+                    <div class="title">Duct Sizing Calculator</div>
+                    <div class="desc">Airflow affects coil process and dehumidification.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="hvac-load-calculation.html">Load Calc</a> · <a href="../privacy.html">Privacy</a></p>
+            <p style="margin-top: 8px;">Not affiliated with ASHRAE. Field reference only.</p>
+        </div>
+    </article>
+</body>
+</html>
