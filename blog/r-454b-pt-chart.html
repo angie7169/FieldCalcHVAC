@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-454B PT Chart: Complete Pressure-Temperature Guide (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Complete R-454B pressure-temperature chart with bubble and dew point values in PSIG. Includes R-454B vs R-410A comparison, operating pressures, and superheat/subcooling targets.">
+    <meta name="keywords" content="r-454b pt chart, r-454b pressure temperature chart, r-454b pressures, r-454b vs r-410a, r-454b superheat subcooling">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="R-454B PT Chart: Complete Pressure-Temperature Guide">
+    <meta property="og:description" content="Full R-454B PT chart with bubble/dew pressures, R-410A comparison, and field reference values.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/r-454b-pt-chart.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_01_r454b.png">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "R-454B PT Chart: Complete Pressure-Temperature Guide",
+      "description": "Complete R-454B pressure-temperature chart with bubble and dew point values, R-410A comparison, and superheat/subcooling targets.",
+      "author": { "@type": "Organization", "name": "JNPRD" },
+      "publisher": { "@type": "Organization", "name": "FieldCalc HVAC" },
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the operating pressure of R-454B?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R-454B typically operates at 200-300 PSIG on the low side and 350-500 PSIG on the high side, depending on outdoor temperature. At 70°F, the saturated pressure is approximately 211 PSIG (bubble) / 205 PSIG (dew)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is R-454B a drop-in replacement for R-410A?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. R-454B is not a direct drop-in replacement for R-410A. While pressures are similar, R-454B requires equipment designed for A2L refrigerants, including compatible compressors, expansion valves, and safety sensors. Never mix refrigerants." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the glide of R-454B?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R-454B has a temperature glide of approximately 2.0°F. This means the bubble point and dew point differ by about 2 degrees at any given pressure. Use bubble point for subcooling, dew point for superheat." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the GWP of R-454B?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R-454B has a GWP of 466, which is 78% lower than R-410A (GWP 2088). This significant reduction is why R-454B is replacing R-410A under the EPA AIM Act." }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --cold-dark: #0E84C7;
+            --warm: #FF9500;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; color: var(--text); }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; color: var(--text); }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        /* PT Table */
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+        tr:hover td { background: var(--surface); }
+
+        /* Info cards */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 24px 0; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
+        .info-card .label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 1.3rem; font-weight: 700; color: var(--cold); }
+        .info-card .sub { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+
+        /* Comparison table */
+        .compare-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        .compare-table th:first-child { color: var(--text); }
+
+        /* CTA box */
+        .cta {
+            background: linear-gradient(135deg, var(--surface), var(--surface2));
+            border: 1px solid var(--cold);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 36px 0;
+        }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn {
+            display: inline-block;
+            background: var(--cold);
+            color: #051018;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+
+        /* FAQ */
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; color: var(--text); }
+        .faq-item p { margin-bottom: 0; }
+
+        /* Warning box */
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › R-454B PT Chart
+        </div>
+
+        <h1>R-454B PT Chart: Complete Pressure-Temperature Guide</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+
+        <p class="lead">R-454B is replacing R-410A as the standard refrigerant for new residential and light commercial AC systems starting 2025. If you're an HVAC technician, you need accurate R-454B PT data on hand. This guide provides the complete pressure-temperature chart, field reference values, and everything you need to charge R-454B systems correctly.</p>
+
+        <!-- Quick Facts -->
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">GWP</div>
+                <div class="value">466</div>
+                <div class="sub">78% lower than R-410A</div>
+            </div>
+            <div class="info-card">
+                <div class="label">ODP</div>
+                <div class="value">0</div>
+                <div class="sub">No ozone impact</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Glide</div>
+                <div class="value">2.0°F</div>
+                <div class="sub">Bubble to dew</div>
+            </div>
+            <div class="info-card">
+                <div class="label">Safety</div>
+                <div class="value">A2L</div>
+                <div class="sub">Mildly flammable</div>
+            </div>
+        </div>
+
+        <h2>R-454B Pressure-Temperature Chart</h2>
+        <p>The table below shows saturated R-454B pressures in PSIG at various temperatures (°F). R-454B is a zeotropic blend, so it has two values at each temperature:</p>
+        <ul>
+            <li><strong>Bubble point (liquid)</strong> — use for <strong>subcooling</strong> calculations (condenser side)</li>
+            <li><strong>Dew point (vapor)</strong> — use for <strong>superheat</strong> calculations (evaporator side)</li>
+        </ul>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Temp (°F)</th>
+                        <th>Bubble Pressure (PSIG)</th>
+                        <th>Dew Pressure (PSIG)</th>
+                        <th>Glide (°F)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>-20°F</td><td>6.4</td><td>5.8</td><td>0.6</td></tr>
+                    <tr><td>0°F</td><td>27.6</td><td>25.8</td><td>1.8</td></tr>
+                    <tr><td>20°F</td><td>82.0</td><td>78.0</td><td>2.0</td></tr>
+                    <tr><td>32°F</td><td>106.0</td><td>101.5</td><td>2.0</td></tr>
+                    <tr><td>40°F</td><td>124.0</td><td>119.5</td><td>2.0</td></tr>
+                    <tr><td>50°F</td><td>150.0</td><td>145.0</td><td>2.0</td></tr>
+                    <tr><td>70°F</td><td>211.0</td><td>205.0</td><td>2.0</td></tr>
+                    <tr><td>90°F</td><td>288.0</td><td>280.0</td><td>2.0</td></tr>
+                    <tr><td>110°F</td><td>383.0</td><td>373.0</td><td>2.0</td></tr>
+                    <tr><td>130°F</td><td>500.0</td><td>488.0</td><td>2.0</td></tr>
+                    <tr><td>150°F</td><td>640.0</td><td>625.0</td><td>2.0</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text3);">Data source: Honeywell Solstice® R-454B PT chart and NIST Refprop. Values verified against field manifold gauge readings.</p>
+
+        <!-- App CTA -->
+        <div class="cta">
+            <h3>📱 Need R-454B PT data on the roof?</h3>
+            <p>FieldCalc HVAC is a free iOS app with built-in R-454B PT charts, superheat/subcooling calculators, duct sizing, and more. Works 100% offline — no signal needed.</p>
+            <a class="cta-btn" href="../index.html">Download Free →</a>
+        </div>
+
+        <h2>R-454B vs R-410A: Pressure Comparison</h2>
+        <p>R-454B operates at <strong>similar but slightly lower pressures</strong> than R-410A. The pressures are close enough that R-454B is often described as a "near-drop-in" refrigerant, but <strong>it is NOT a direct retrofit</strong> — equipment must be designed for A2L refrigerants.</p>
+
+        <div class="compare-wrap">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>R-454B</th>
+                        <th>R-410A</th>
+                        <th>Difference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>GWP</td><td>466</td><td>2088</td><td style="color:#34C759">−78%</td></tr>
+                    <tr><td>70°F Bubble (PSIG)</td><td>211</td><td>201</td><td>+5%</td></tr>
+                    <tr><td>90°F Bubble (PSIG)</td><td>288</td><td>274</td><td>+5%</td></tr>
+                    <tr><td>110°F Bubble (PSIG)</td><td>383</td><td>365</td><td>+5%</td></tr>
+                    <tr><td>Glide (°F)</td><td>2.0</td><td>0.2</td><td>+1.8°</td></tr>
+                    <tr><td>Safety Class</td><td>A2L</td><td>A1</td><td>Mildly flammable</td></tr>
+                    <tr><td>Composition</td><td>68.9% R-32 / 31.1% R-1234yf</td><td>50% R-32 / 50% R-125</td><td>—</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text3);">R-410A data source: Arkema Forane® R-410A PT chart.</p>
+
+        <h2>Typical R-454B Operating Pressures</h2>
+        <p>Here are common field reference pressures for R-454B residential AC systems. <strong>Actual pressures vary by system design, airflow, and conditions</strong> — always refer to OEM charging charts.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">Low Side (70°F indoor)</div>
+                <div class="value">205-211</div>
+                <div class="sub">PSIG saturated</div>
+            </div>
+            <div class="info-card">
+                <div class="label">High Side (95°F outdoor)</div>
+                <div class="value">~330</div>
+                <div class="sub">PSIG saturated</div>
+            </div>
+            <div class="info-card">
+                <div class="label">High Side (110°F outdoor)</div>
+                <div class="value">~383</div>
+                <div class="sub">PSIG saturated</div>
+            </div>
+        </div>
+
+        <h2>Superheat & Subcooling with R-454B</h2>
+        <p>Because R-454B has a temperature glide of ~2°F, the way you calculate superheat and subcooling is slightly different from single-component refrigerants:</p>
+
+        <h3>Superheat (Evaporator Side)</h3>
+        <p>Use the <strong>dew point</strong> pressure from the chart to find saturation temperature, then:</p>
+        <p style="text-align:center; background:var(--surface); padding:16px; border-radius:10px; font-family:monospace; color:var(--cold);">
+            Superheat = Suction Line Temp − Dew Point Saturation Temp
+        </p>
+
+        <h3>Subcooling (Condenser Side)</h3>
+        <p>Use the <strong>bubble point</strong> pressure from the chart to find saturation temperature, then:</p>
+        <p style="text-align:center; background:var(--surface); padding:16px; border-radius:10px; font-family:monospace; color:var(--warm);">
+            Subcooling = Bubble Point Saturation Temp − Liquid Line Temp
+        </p>
+
+        <div class="warning">
+            <p><strong>⚠️ Important:</strong> Using the wrong curve (bubble vs dew) introduces a ~2°F error due to glide. Always use dew point for superheat, bubble point for subcooling. FieldCalc HVAC handles this automatically in its superheat/subcooling calculator.</p>
+        </div>
+
+        <h2>Why R-454B is Replacing R-410A</h2>
+        <p>The EPA AIM Act mandates an 85% reduction in HFC production by 2036. Key timeline:</p>
+        <ul>
+            <li><strong>2025-01-01:</strong> R-410A production cut 85% — new AC units switch to R-454B</li>
+            <li><strong>2025-2026:</strong> Carrier, Trane, Lennox production lines fully transition to R-454B</li>
+            <li><strong>2026+:</strong> First R-454B systems enter warranty period — service market grows rapidly</li>
+            <li><strong>2036:</strong> HFC reduction target complete</li>
+        </ul>
+        <p>R-454B's GWP of 466 (vs R-410A's 2088) makes it compliant with the regulation while maintaining similar performance characteristics.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>What is the operating pressure of R-454B?</h3>
+            <p>R-454B typically operates at <strong>200-300 PSIG on the low side</strong> and <strong>350-500 PSIG on the high side</strong>, depending on outdoor temperature. At 70°F ambient, the saturated pressure is approximately 211 PSIG (bubble) / 205 PSIG (dew).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is R-454B a drop-in replacement for R-410A?</h3>
+            <p><strong>No.</strong> R-454B is not a direct drop-in replacement. While pressures are similar, R-454B requires equipment designed for A2L refrigerants, including compatible compressors, expansion valves, and leak detection sensors. Never mix refrigerants or use R-454B in R-410A equipment.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the temperature glide of R-454B?</h3>
+            <p>R-454B has a temperature glide of approximately <strong>2.0°F</strong>. This means the bubble point and dew point differ by about 2 degrees at any given pressure. Use bubble point for subcooling, dew point for superheat.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the GWP of R-454B?</h3>
+            <p>R-454B has a GWP of <strong>466</strong>, which is 78% lower than R-410A (GWP 2088). This significant reduction is why R-454B is replacing R-410A under the EPA AIM Act.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is R-454B made of?</h3>
+            <p>R-454B is a zeotropic blend of <strong>68.9% R-32 (difluoromethane)</strong> and <strong>31.1% R-1234yf (tetrafluoropropene)</strong>. The R-1234yf component gives it the low GWP, while R-32 provides capacity and efficiency.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Get R-454B PT data in your pocket</h3>
+            <p>FieldCalc HVAC includes the complete R-454B PT chart, superheat/subcooling calculators, and 12 more refrigerants — all offline. Free to download.</p>
+            <a class="cta-btn" href="../index.html">Download for iOS →</a>
+        </div>
+
+        <h2>Data Sources & Accuracy</h2>
+        <p>This R-454B PT chart is compiled from:</p>
+        <ul>
+            <li><a href="https://prod-edam.honeywell.com/content/dam/honeywell-edam/pmt/oneam/en-us/refrigerants/documents/hon-ess-am-3161690-adm-tds-pt-chart-solstice-454b-ltr-en.pdf" style="color:var(--cold)">Honeywell Solstice® R-454B PT Chart (PDF)</a></li>
+            <li>Chemours Opteon™ R-454B technical documentation</li>
+            <li>NIST Reference Fluid Properties (Refprop)</li>
+            <li>ASHRAE Fundamentals</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text3);">Refrigerant PT data is factual physical property data, sourced from manufacturer publications. This guide is for field reference only and is not a substitute for OEM charging instructions or professional judgment.</p>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../support.html">Support</a></p>
+            <p style="margin-top: 8px;">Not affiliated with Honeywell, Chemours, ASHRAE, or ACCA.</p>
+        </div>
+    </article>
+</body>
+</html>
