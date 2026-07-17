@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Check Subcooling: Complete Field Procedure (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Step-by-step guide to checking subcooling on HVAC systems. Learn the formula, target values, tools needed, and how to diagnose charge issues with R-454B and R-410A.">
+    <meta name="keywords" content="how to check subcooling, subcooling calculation, hvac subcooling, target subcooling, subcooling formula, r-454b subcooling, r-410a subcooling">
+
+    <meta property="og:title" content="How to Check Subcooling: Complete Field Procedure">
+    <meta property="og:description" content="Step-by-step guide to checking subcooling — formula, targets, diagnosis, and the bubble point rule for R-454B.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/how-to-check-subcooling.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Check Subcooling",
+      "description": "Step-by-step guide to checking subcooling on HVAC systems, including formula, target values, and diagnosis.",
+      "totalTime": "PT10M",
+      "supply": [
+        { "@type": "HowToSupply", "name": "Manifold gauge set" },
+        { "@type": "HowToSupply", "name": "Pipe thermometer / clamp probe" },
+        { "@type": "HowToSupply", "name": "PT chart or calculator app" }
+      ],
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Connect manifold gauges", "text": "Connect your manifold gauge set to the liquid service valve (high side)." },
+        { "@type": "HowToStep", "position": 2, "name": "Read liquid pressure", "text": "Read and record the liquid line pressure in PSIG." },
+        { "@type": "HowToStep", "position": 3, "name": "Find saturation temp", "text": "Use a PT chart to convert liquid pressure to saturated temperature (bubble point for blends)." },
+        { "@type": "HowToStep", "position": 4, "name": "Measure liquid line temp", "text": "Measure the actual liquid line temperature at the condenser outlet." },
+        { "@type": "HowToStep", "position": 5, "name": "Calculate subcooling", "text": "Subtract liquid line temperature from saturation temperature." },
+        { "@type": "HowToStep", "position": 6, "name": "Compare to target", "text": "Compare actual subcooling to OEM target. High = overcharge, low = undercharge." }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for subcooling?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Subcooling = Saturation Temperature (from PT chart, bubble point for blends) − Liquid Line Temperature." }
+        },
+        {
+          "@type": "Question",
+          "name": "What should subcooling be on a residential AC?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typical target subcooling is 8-15°F for TXV systems, sometimes up to 20°F. Always refer to the OEM charging chart — subcooling target varies by model and outdoor temperature." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does low subcooling mean?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Low subcooling indicates undercharge — not enough liquid refrigerant in the condenser. Possible causes: low charge, leak, or a restriction on the high side. Add refrigerant slowly and recheck." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I use bubble or dew point for subcooling?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use bubble point for subcooling (condenser/liquid side). Use dew point for superheat (evaporator/vapor side). This applies to zeotropic blends like R-454B and R-407C that have temperature glide." }
+        }
+      ]
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .formula-box { background: var(--surface); border: 1px solid var(--warm); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+        .formula-box .formula { font-family: 'SF Mono', Monaco, monospace; font-size: 1.2rem; color: var(--warm); font-weight: 600; }
+
+        .steps { counter-reset: step; margin: 24px 0; }
+        .step-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; position: relative; padding-left: 64px; }
+        .step-item::before { counter-increment: step; content: counter(step); position: absolute; left: 20px; top: 20px; width: 32px; height: 32px; background: var(--warm); color: #051018; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; }
+        .step-item h3 { margin-top: 0; font-size: 1.05rem; }
+        .step-item p { margin-bottom: 0; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 24px 0; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+        .info-card .label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 1.2rem; font-weight: 700; }
+        .info-card.ok .value { color: var(--ok); }
+        .info-card.warn .value { color: var(--warm); }
+        .info-card.danger .value { color: var(--hot); }
+        .info-card .sub { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › How to Check Subcooling
+        </div>
+
+        <h1>How to Check Subcooling: Complete Field Procedure</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+
+        <p class="lead">Subcooling measures how much liquid refrigerant has been cooled below its saturation temperature in the condenser. It's the key indicator of proper charge on TXV/EEV systems, where superheat is held constant by the metering device. This guide covers the complete procedure, formula, targets, and diagnosis — including the critical bubble-point rule for R-454B.</p>
+
+        <h2>What is Subcooling?</h2>
+        <p>Subcooling is the <strong>temperature difference between the saturation temperature (at condenser pressure) and the actual liquid line temperature</strong>. It tells you how much "extra" liquid is stacked in the condenser — a direct indicator of refrigerant charge on TXV systems.</p>
+
+        <p>In simple terms: subcooling confirms the metering device has a solid column of liquid to feed. Too little subcooling = undercharge. Too much = overcharge.</p>
+
+        <div class="formula-box">
+            <div class="formula">Subcooling = Saturation Temp − Liquid Line Temp</div>
+            <p style="font-size:0.85rem; color:var(--text3); margin-top:8px; margin-bottom:0;">Saturation temp comes from a PT chart using <strong>bubble point</strong> for blended refrigerants like R-454B</p>
+        </div>
+
+        <h2>Subcooling vs Superheat: When to Use Which</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Metering Device</th><th>Primary Check</th><th>Why</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>TXV / EEV</td><td><strong>Subcooling</strong></td><td>Superheat is modulated by the valve — subcooling tells you about charge.</td></tr>
+                    <tr><td>Fixed Orifice / Piston</td><td><strong>Superheat</strong></td><td>Subcooling is less meaningful — use superheat + OEM chart.</td></tr>
+                    <tr><td>Both</td><td>Check both</td><td>Subcooling confirms charge, superheat confirms TXV operation.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>New to superheat? Read our <a href="how-to-check-superheat.html" style="color:var(--cold)">step-by-step superheat guide</a> first — the two procedures are mirrors of each other.</p>
+
+        <h2>Tools You Need</h2>
+        <ul>
+            <li><strong>Manifold gauge set</strong> — to read liquid (high-side) pressure</li>
+            <li><strong>Pipe thermometer or clamp probe</strong> — to measure liquid line temperature</li>
+            <li><strong>PT chart or calculator app</strong> — to convert pressure to saturation temperature</li>
+            <li><strong>Insulation</strong> — to properly insulate the thermometer probe on the pipe</li>
+        </ul>
+
+        <h2>Step-by-Step: How to Check Subcooling</h2>
+
+        <div class="steps">
+            <div class="step-item">
+                <h3>Connect your manifold gauges</h3>
+                <p>Connect the high-side hose to the liquid service valve. Let the system run for at least 10-15 minutes to reach steady-state.</p>
+            </div>
+            <div class="step-item">
+                <h3>Read and record liquid pressure</h3>
+                <p>Note the liquid line pressure in PSIG. For example: <strong>380 PSIG</strong>.</p>
+            </div>
+            <div class="step-item">
+                <h3>Convert pressure to saturation temperature</h3>
+                <p>Use a PT chart for your refrigerant. For R-454B at 380 PSIG, the <strong>bubble point</strong> saturation temperature is approximately <strong>109°F</strong>. <em>Use bubble point for subcooling — not dew point. Getting this wrong adds a 2°F error on R-454B.</em></p>
+            </div>
+            <div class="step-item">
+                <h3>Measure liquid line temperature</h3>
+                <p>Place your thermometer probe on the liquid line <strong>6 inches before the TXV/indoor unit</strong>, clean the pipe, and insulate the probe. Wait for a stable reading. For example: <strong>98°F</strong>.</p>
+            </div>
+            <div class="step-item">
+                <h3>Calculate subcooling</h3>
+                <p>Subtract liquid line temperature from saturation temperature:<br>
+                <strong>109°F − 98°F = 11°F subcooling</strong></p>
+            </div>
+            <div class="step-item">
+                <h3>Compare to OEM target</h3>
+                <p>Check the equipment nameplate or OEM charging chart for the target subcooling. Compare actual vs target to diagnose charge issues.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Subcooling without the PT lookup</h3>
+            <p>FieldCalc HVAC handles bubble-point selection and the full subcooling calculation automatically. Enter three numbers, get instant green/amber/red status with diagnosis. Works offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>Target Subcooling Values</h2>
+        <p>Subcooling target varies widely by system — always use the value on the <strong>unit nameplate</strong> or OEM charging chart. General ranges:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>System Type</th><th>Typical Subcooling Target</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Residential split AC (TXV)</td><td>8-15°F</td><td>Most common. Check nameplate.</td></tr>
+                    <tr><td>Heat pump (heating mode)</td><td>15-25°F</td><td>Higher due to reversing valve.</td></tr>
+                    <tr><td>Commercial RTU</td><td>10-20°F</td><td>Varies by manufacturer.</td></tr>
+                    <tr><td>Mini-split / VRF</td><td>Check OEM</td><td>Often proprietary targets.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ The nameplate is king:</strong> Subcooling target is printed on the unit's data plate for a reason. It already factors in design superheat, metering device type, and expected operating conditions. Don't use a "rule of thumb" when the OEM printed the exact number on the unit.</p>
+        </div>
+
+        <h2>Diagnosing Subcooling Readings</h2>
+
+        <div class="info-grid">
+            <div class="info-card ok">
+                <div class="label">Within Target (±3°F)</div>
+                <div class="value">Correct</div>
+                <div class="sub">Charge is right. Solid liquid column to TXV.</div>
+            </div>
+            <div class="info-card warn">
+                <div class="label">3-5°F Below Target</div>
+                <div class="value">Slightly Low</div>
+                <div class="sub">Mild undercharge. Add refrigerant slowly.</div>
+            </div>
+            <div class="info-card danger">
+                <div class="label">>5°F Below Target</div>
+                <div class="value">Too Low</div>
+                <div class="sub">Undercharge or leak. TXV may be starved.</div>
+            </div>
+            <div class="info-card danger">
+                <div class="label">>5°F Above Target</div>
+                <div class="value">Too High</div>
+                <div class="sub">Overcharge, restriction, or poor condenser airflow.</div>
+            </div>
+        </div>
+
+        <h2>What Causes Low Subcooling?</h2>
+        <ul>
+            <li><strong>Undercharge</strong> — most common cause. Not enough refrigerant to fill the condenser.</li>
+            <li><strong>Refrigerant leak</strong> — check for oil stains, use a leak detector</li>
+            <li><strong>TXV overfeeding</strong> — metering device feeding too much, draining condenser liquid</li>
+            <li><strong>Low ambient</strong> — condenser too efficient, insufficient pressure build-up</li>
+        </ul>
+
+        <h2>What Causes High Subcooling?</h2>
+        <ul>
+            <li><strong>Overcharge</strong> — too much refrigerant stacking in the condenser</li>
+            <li><strong>Restriction downstream</strong> — clogged filter drier, kinked line, restricted TXV</li>
+            <li><strong>Poor condenser airflow</strong> — dirty coil, bad fan motor, blocked fins</li>
+            <li><strong>Non-condensables</strong> — air or moisture in the system (requires recovery + evacuation)</li>
+        </ul>
+
+        <div class="warning">
+            <p><strong>⚠️ Don't chase a single reading:</strong> Subcooling changes with outdoor temperature and load. Always verify conditions are stable, check both subcooling and superheat, and confirm airflow (ABC = <a href="how-to-check-superheat.html" style="color:var(--warm)">Airflow Before Charge</a>) before adjusting refrigerant.</p>
+        </div>
+
+        <h2>R-454B and R-410A: The Bubble Point Rule</h2>
+        <p>For subcooling, you must use the <strong>bubble point</strong> curve on your PT chart — not dew point. This is the mirror of the superheat rule.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Refrigerant</th><th>Glide</th><th>Use for Subcooling</th><th>Use for Superheat</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>R-454B</td><td>2.0°F</td><td><strong>Bubble point</strong></td><td>Dew point</td></tr>
+                    <tr><td>R-410A</td><td>0.2°F</td><td>Bubble point</td><td>Dew point</td></tr>
+                    <tr><td>R-32</td><td>0°F</td><td>Same value</td><td>Same value</td></tr>
+                    <tr><td>R-407C</td><td>~10°F</td><td><strong>Bubble point</strong> (critical)</td><td>Dew point</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Using the wrong curve on R-454B adds a 2°F error. On high-glide blends like R-407C, the error can be 10°F — enough to completely misdiagnose the charge. For full R-454B PT values, see our <a href="r-454b-pt-chart.html" style="color:var(--cold)">complete R-454B PT chart guide</a>.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>What is the formula for subcooling?</h3>
+            <p>Subcooling = Saturation Temperature (bubble point) − Liquid Line Temperature. Always use bubble point for subcooling on blended refrigerants.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What should subcooling be on a residential AC?</h3>
+            <p>Typical target is 8-15°F for TXV systems, but the exact value is on the unit nameplate. Always use the OEM-specified target, not a rule of thumb.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What does low subcooling mean?</h3>
+            <p>Low subcooling indicates undercharge — not enough liquid refrigerant in the condenser. Causes: low charge, leak, or TXV overfeeding. Add refrigerant slowly and recheck.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I use bubble or dew point for subcooling?</h3>
+            <p>Use <strong>bubble point</strong> for subcooling (condenser/liquid side). Use <strong>dew point</strong> for superheat (evaporator/vapor side). Mixing them up adds a 2°F error on R-454B.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where do I measure liquid line temperature?</h3>
+            <p>Measure on the liquid line, 6 inches before the TXV/indoor unit. Clean the pipe, clamp the probe tightly, and insulate it for an accurate reading.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Get subcooling right every time</h3>
+            <p>FieldCalc HVAC handles the PT lookup, bubble-point selection, and status diagnosis automatically. Three inputs, instant answer — works on the roof with no signal.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Pro Tips for Accurate Subcooling</h2>
+        <ul>
+            <li><strong>Let the system stabilize</strong> — 10-15 minutes minimum after connecting gauges</li>
+            <li><strong>Check the nameplate first</strong> — the target is printed on the unit</li>
+            <li><strong>Measure liquid line at the right spot</strong> — 6" before TXV, not at the condenser outlet</li>
+            <li><strong>Confirm condenser airflow</strong> — dirty coils cause high subcooling that looks like overcharge</li>
+            <li><strong>Check both subcooling and superheat</strong> — together they tell the full story</li>
+            <li><strong>Record outdoor temp</strong> — subcooling target shifts with ambient conditions</li>
+        </ul>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">The mirror procedure — use dew point instead of bubble point.</div>
+                </a>
+                <a class="related-card" href="r-454b-pt-chart.html">
+                    <div class="tag">Reference</div>
+                    <div class="title">R-454B PT Chart: Complete Guide</div>
+                    <div class="desc">Bubble point values needed for step 3 saturation lookup.</div>
+                </a>
+                <a class="related-card" href="r-454b-vs-r-410a.html">
+                    <div class="tag">Comparison</div>
+                    <div class="title">R-454B vs R-410A</div>
+                    <div class="desc">Why glide matters — 2°F error if you pick the wrong curve.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="how-to-check-superheat.html">Superheat</a> · <a href="../privacy.html">Privacy</a></p>
+            <p style="margin-top: 8px;">Not affiliated with ASHRAE or ACCA. Field reference only — follow OEM specifications.</p>
+        </div>
+    </article>
+</body>
+</html>

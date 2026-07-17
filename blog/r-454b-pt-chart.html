@@ -141,6 +141,16 @@
 
         .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
         .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        /* Related articles */
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -337,6 +347,28 @@
             <li>ASHRAE Fundamentals</li>
         </ul>
         <p style="font-size: 0.85rem; color: var(--text3);">Refrigerant PT data is factual physical property data, sourced from manufacturer publications. This guide is for field reference only and is not a substitute for OEM charging instructions or professional judgment.</p>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="r-454b-vs-r-410a.html">
+                    <div class="tag">Comparison</div>
+                    <div class="title">R-454B vs R-410A: Full Comparison</div>
+                    <div class="desc">Pressures, GWP, safety class, and what changes for techs.</div>
+                </a>
+                <a class="related-card" href="how-to-check-superheat.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Superheat</div>
+                    <div class="desc">Step-by-step guide using R-454B dew point values.</div>
+                </a>
+                <a class="related-card" href="how-to-check-subcooling.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Subcooling</div>
+                    <div class="desc">The companion procedure — uses R-454B bubble point.</div>
+                </a>
+            </div>
+        </div>
 
         <div class="footer">
             <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../support.html">Support</a></p>

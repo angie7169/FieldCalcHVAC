@@ -133,6 +133,15 @@
 
         .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
         .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+
+        .related { margin: 40px 0 0; }
+        .related h2 { font-size: 1.2rem; margin-bottom: 16px; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .related-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-decoration: none; transition: border-color 0.2s; }
+        .related-card:hover { border-color: var(--cold); }
+        .related-card .tag { font-size: 0.7rem; color: var(--cold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .related-card .title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+        .related-card .desc { font-size: 0.82rem; color: var(--text3); margin-top: 4px; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -328,6 +337,28 @@
             <li><strong>Check airflow first</strong> — dirty filters and coils cause bad superheat readings (remember: ABC = Airflow Before Charge)</li>
             <li><strong>Record conditions</strong> — note outdoor temp, indoor temp, and wet bulb for proper target comparison</li>
         </ul>
+
+        <!-- Related articles -->
+        <div class="related">
+            <h2>Related Guides</h2>
+            <div class="related-grid">
+                <a class="related-card" href="how-to-check-subcooling.html">
+                    <div class="tag">Tutorial</div>
+                    <div class="title">How to Check Subcooling</div>
+                    <div class="desc">The mirror procedure — use bubble point (liquid side).</div>
+                </a>
+                <a class="related-card" href="r-454b-pt-chart.html">
+                    <div class="tag">Reference</div>
+                    <div class="title">R-454B PT Chart: Complete Guide</div>
+                    <div class="desc">Full PT table needed for the saturation temp lookup in step 3.</div>
+                </a>
+                <a class="related-card" href="r-454b-vs-r-410a.html">
+                    <div class="tag">Comparison</div>
+                    <div class="title">R-454B vs R-410A</div>
+                    <div class="desc">Why dew point matters for R-454B superheat (2°F glide).</div>
+                </a>
+            </div>
+        </div>
 
         <div class="footer">
             <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="r-454b-vs-r-410a.html">R-454B vs R-410A</a> · <a href="../privacy.html">Privacy</a></p>
