@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Check Superheat: Step-by-Step Field Guide (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Complete step-by-step guide to checking superheat on HVAC systems. Learn the formula, target values, tools needed, and how to diagnose charge issues with R-454B and R-410A.">
+    <meta name="keywords" content="how to check superheat, superheat calculation, hvac superheat, target superheat, superheat formula, r-454b superheat">
+
+    <meta property="og:title" content="How to Check Superheat: Step-by-Step Field Guide">
+    <meta property="og:description" content="Complete guide to checking superheat — formula, target values, tools, and charge diagnosis.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/how-to-check-superheat.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Check Superheat",
+      "description": "Step-by-step guide to checking superheat on HVAC systems, including formula, target values, and diagnosis.",
+      "totalTime": "PT10M",
+      "supply": [
+        { "@type": "HowToSupply", "name": "Manifold gauge set" },
+        { "@type": "HowToSupply", "name": "Pipe thermometer / clamp probe" },
+        { "@type": "HowToSupply", "name": "PT chart or calculator app" }
+      ],
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Connect manifold gauges", "text": "Connect your manifold gauge set to the suction service valve (low side)." },
+        { "@type": "HowToStep", "position": 2, "name": "Read suction pressure", "text": "Read and record the suction pressure in PSIG." },
+        { "@type": "HowToStep", "position": 3, "name": "Find saturation temp", "text": "Use a PT chart to convert suction pressure to saturated temperature (dew point for blends)." },
+        { "@type": "HowToStep", "position": 4, "name": "Measure suction line temp", "text": "Measure the actual suction line temperature at the compressor." },
+        { "@type": "HowToStep", "position": 5, "name": "Calculate superheat", "text": "Subtract saturation temperature from suction line temperature." },
+        { "@type": "HowToStep", "position": 6, "name": "Compare to target", "text": "Compare actual superheat to target. High = undercharge, low = overcharge." }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the formula for superheat?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Superheat = Suction Line Temperature − Saturation Temperature (from PT chart, using dew point for blended refrigerants)." }
+        },
+        {
+          "@type": "Question",
+          "name": "What should superheat be on a residential AC?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typical target superheat is 8-15°F for TXV systems and 10-20°F for fixed-orifice systems. Always refer to OEM charging charts for the exact target." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does high superheat mean?",
+          "acceptedAnswer": { "@type": "Answer", "text": "High superheat indicates undercharge, a restriction, or low airflow. The evaporator is starved of refrigerant, so the vapor heats up more than normal before reaching the compressor." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I use bubble or dew point for superheat?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use dew point for superheat (evaporator/vapor side). Use bubble point for subcooling (condenser/liquid side). This applies to zeotropic blends like R-454B that have temperature glide." }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .formula-box { background: var(--surface); border: 1px solid var(--cold); border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center; }
+        .formula-box .formula { font-family: 'SF Mono', Monaco, monospace; font-size: 1.2rem; color: var(--cold); font-weight: 600; }
+
+        .steps { counter-reset: step; margin: 24px 0; }
+        .step-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; position: relative; padding-left: 64px; }
+        .step-item::before { counter-increment: step; content: counter(step); position: absolute; left: 20px; top: 20px; width: 32px; height: 32px; background: var(--cold); color: #051018; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem; }
+        .step-item h3 { margin-top: 0; font-size: 1.05rem; }
+        .step-item p { margin-bottom: 0; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 24px 0; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+        .info-card .label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 1.2rem; font-weight: 700; }
+        .info-card.ok .value { color: var(--ok); }
+        .info-card.warn .value { color: var(--warm); }
+        .info-card.danger .value { color: var(--hot); }
+        .info-card .sub { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › How to Check Superheat
+        </div>
+
+        <h1>How to Check Superheat: Step-by-Step Field Guide</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+
+        <p class="lead">Superheat is one of the most important measurements an HVAC technician can make. It tells you whether the evaporator is getting the right amount of refrigerant — and whether your charge is correct. This guide walks through the complete procedure, the formula, target values, and how to diagnose common charge problems.</p>
+
+        <h2>What is Superheat?</h2>
+        <p>Superheat is the <strong>temperature difference between the actual suction line temperature and the saturation temperature</strong> at the current suction pressure. It measures how much the refrigerant vapor has heated above its boiling point inside the evaporator.</p>
+
+        <p>In simple terms: superheat tells you if your evaporator is feeding the right amount of refrigerant. Too high means starved (undercharge). Too low means flooded (overcharge).</p>
+
+        <div class="formula-box">
+            <div class="formula">Superheat = Suction Line Temp − Saturation Temp</div>
+            <p style="font-size:0.85rem; color:var(--text3); margin-top:8px; margin-bottom:0;">Saturation temp comes from a PT chart using <strong>dew point</strong> for blended refrigerants like R-454B</p>
+        </div>
+
+        <h2>Tools You Need</h2>
+        <ul>
+            <li><strong>Manifold gauge set</strong> — to read suction pressure</li>
+            <li><strong>Pipe thermometer or clamp probe</strong> — to measure suction line temperature</li>
+            <li><strong>PT chart or calculator app</strong> — to convert pressure to saturation temperature</li>
+            <li><strong>Insulation</strong> — to properly insulate the thermometer probe on the pipe</li>
+        </ul>
+
+        <h2>Step-by-Step: How to Check Superheat</h2>
+
+        <div class="steps">
+            <div class="step-item">
+                <h3>Connect your manifold gauges</h3>
+                <p>Connect the low-side hose to the suction service valve. Make sure the system has been running for at least 10-15 minutes to reach steady-state conditions.</p>
+            </div>
+            <div class="step-item">
+                <h3>Read and record suction pressure</h3>
+                <p>Note the suction pressure in PSIG. For example: <strong>130 PSIG</strong>.</p>
+            </div>
+            <div class="step-item">
+                <h3>Convert pressure to saturation temperature</h3>
+                <p>Use a PT chart for your refrigerant. For R-454B at 130 PSIG, the dew point saturation temperature is approximately <strong>44°F</strong>. <em>Remember: use dew point for superheat (vapor side), bubble point for subcooling (liquid side).</em></p>
+            </div>
+            <div class="step-item">
+                <h3>Measure suction line temperature</h3>
+                <p>Place your thermometer probe on the suction line <strong>6 inches from the compressor</strong>, clean the pipe, and insulate the probe. Wait for a stable reading. For example: <strong>56°F</strong>.</p>
+            </div>
+            <div class="step-item">
+                <h3>Calculate superheat</h3>
+                <p>Subtract saturation temperature from suction line temperature:<br>
+                <strong>56°F − 44°F = 12°F superheat</strong></p>
+            </div>
+            <div class="step-item">
+                <h3>Compare to target</h3>
+                <p>Check the OEM charging chart for the target superheat at your current conditions. Compare actual vs target to diagnose charge issues.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Skip the PT chart lookup</h3>
+            <p>FieldCalc HVAC calculates superheat automatically — just enter suction pressure, line temp, and target. Get instant status (green/amber/red) with diagnostic guidance. Works offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>Target Superheat Values</h2>
+        <p>Target superheat varies by metering device and system design. Here are common ranges:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Metering Device</th><th>Target Superheat</th><th>Notes</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>TXV (Thermostatic Expansion Valve)</td><td>8-15°F</td><td>Most modern systems. TXV maintains constant superheat.</td></tr>
+                    <tr><td>EEV (Electronic Expansion Valve)</td><td>8-12°F</td><td>Precise control. Check OEM specs.</td></tr>
+                    <tr><td>Fixed Orifice / Capillary</td><td>Varies by outdoor temp</td><td>Use OEM charging chart. Target changes with conditions.</td></tr>
+                    <tr><td>Piston / Flowrator</td><td>10-20°F</td><td>Older systems. Superheat varies with load.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="warning">
+            <p><strong>⚠️ Always check OEM data:</strong> These are general ranges. The exact target for a specific unit depends on the manufacturer's charging chart, which factors in outdoor temperature, indoor wet bulb, and system design. Never charge blindly to a "standard" number.</p>
+        </div>
+
+        <h2>Diagnosing Superheat Readings</h2>
+        <p>Once you have your superheat reading, here's what it tells you about the system:</p>
+
+        <div class="info-grid">
+            <div class="info-card ok">
+                <div class="label">Within Target (±5°F)</div>
+                <div class="value">Correct</div>
+                <div class="sub">Charge is right. System running efficiently.</div>
+            </div>
+            <div class="info-card warn">
+                <div class="label">5-10°F Above Target</div>
+                <div class="value">Slightly High</div>
+                <div class="sub">Possible slight undercharge or restriction.</div>
+            </div>
+            <div class="info-card danger">
+                <div class="label">>10°F Above Target</div>
+                <div class="value">Too High</div>
+                <div class="sub">Undercharge, restriction, or low airflow.</div>
+            </div>
+            <div class="info-card danger">
+                <div class="label">>10°F Below Target</div>
+                <div class="value">Too Low</div>
+                <div class="sub">Overcharge or flooding evaporator. Risk to compressor.</div>
+            </div>
+        </div>
+
+        <h2>What Causes High Superheat?</h2>
+        <ul>
+            <li><strong>Undercharge</strong> — not enough refrigerant in the system</li>
+            <li><strong>Restriction</strong> — clogged filter drier, kinked line, blocked TXV</li>
+            <li><strong>Low airflow</strong> — dirty filter, blocked coils, weak blower</li>
+            <li><strong>TXP/EEV failure</strong> — metering device not feeding enough</li>
+            <li><strong>Low load</strong> — system too small for the space</li>
+        </ul>
+
+        <h2>What Causes Low Superheat?</h2>
+        <ul>
+            <li><strong>Overcharge</strong> — too much refrigerant</li>
+            <li><strong>Flooding evaporator</strong> — liquid refrigerant reaching compressor (dangerous!)</li>
+            <li><strong>TXV stuck open</strong> — overfeeding the evaporator</li>
+            <li><strong>High load</strong> — system oversized or extreme conditions</li>
+            <li><strong>Sensor bulb issue</strong> — TXV sensing bulb loose or poorly clamped</li>
+        </ul>
+
+        <div class="warning">
+            <p><strong>⚠️ Low superheat is dangerous:</strong> If liquid refrigerant reaches the compressor, it washes out the oil and causes mechanical failure ("slugging"). If superheat is below 5°F, shut down and investigate immediately.</p>
+        </div>
+
+        <h2>R-454B and R-410A Superheat</h2>
+        <p>The superheat procedure is the <strong>same for all refrigerants</strong>, but blended refrigerants like R-454B and (to a lesser extent) R-410A have an important detail:</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Refrigerant</th><th>Glide</th><th>Use for Superheat</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>R-454B</td><td>2.0°F</td><td><strong>Dew point</strong> (critical — 2°F error if wrong)</td></tr>
+                    <tr><td>R-410A</td><td>0.2°F</td><td>Dew point (negligible difference)</td></tr>
+                    <tr><td>R-32</td><td>0°F</td><td>Single value (pure refrigerant)</td></tr>
+                    <tr><td>R-134a</td><td>0°F</td><td>Single value (pure refrigerant)</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>For R-454B, using bubble point instead of dew point adds a 2°F error to your superheat calculation — enough to misdiagnose the charge. Always verify which curve your PT chart or app uses.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>What is the formula for superheat?</h3>
+            <p>Superheat = Suction Line Temperature − Saturation Temperature. Saturation temperature comes from a PT chart using dew point for blended refrigerants.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What should superheat be on a residential AC?</h3>
+            <p>Typical target is 8-15°F for TXV systems and 10-20°F for fixed-orifice systems. Always check the OEM charging chart for exact targets at your conditions.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What does high superheat mean?</h3>
+            <p>High superheat indicates undercharge, restriction, or low airflow. The evaporator is starved — vapor heats up too much before reaching the compressor.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I use bubble or dew point for superheat?</h3>
+            <p>Use <strong>dew point</strong> for superheat (evaporator/vapor side). Use <strong>bubble point</strong> for subcooling (condenser/liquid side). This matters for blends like R-454B with 2°F glide.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where do I measure suction line temperature?</h3>
+            <p>Measure 6 inches from the compressor on the suction line. Clean the pipe, clamp the probe tightly, and insulate it for an accurate reading.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Calculate superheat in seconds</h3>
+            <p>FieldCalc HVAC handles the PT lookup, dew point selection, and status diagnosis automatically. Enter three numbers, get a clear answer. Works offline on the roof.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Pro Tips for Accurate Superheat</h2>
+        <ul>
+            <li><strong>Let the system stabilize</strong> — wait 10-15 minutes after connecting gauges before taking readings</li>
+            <li><strong>Clean the pipe</strong> — dirt and paint affect temperature readings</li>
+            <li><strong>Insulate the probe</strong> — ambient air skews the measurement</li>
+            <li><strong>Check airflow first</strong> — dirty filters and coils cause bad superheat readings (remember: ABC = Airflow Before Charge)</li>
+            <li><strong>Record conditions</strong> — note outdoor temp, indoor temp, and wet bulb for proper target comparison</li>
+        </ul>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="r-454b-vs-r-410a.html">R-454B vs R-410A</a> · <a href="../privacy.html">Privacy</a></p>
+            <p style="margin-top: 8px;">Not affiliated with ASHRAE or ACCA. Field reference only — follow OEM specifications.</p>
+        </div>
+    </article>
+</body>
+</html>
