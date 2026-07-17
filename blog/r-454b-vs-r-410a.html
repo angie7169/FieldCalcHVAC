@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-454B vs R-410A: Full Pressure & Property Comparison (2026) | FieldCalc HVAC</title>
+    <meta name="description" content="Side-by-side R-454B vs R-410A comparison: pressures, GWP, glide, safety class, oil compatibility, and what HVAC techs need to know for the 2025 refrigerant transition.">
+    <meta name="keywords" content="r-454b vs r-410a, r-454b vs r410a, r-454b pressures, r-410a replacement, r-454b transition, hvac refrigerant switch 2025">
+
+    <meta property="og:title" content="R-454B vs R-410A: Full Pressure & Property Comparison">
+    <meta property="og:description" content="Side-by-side R-454B vs R-410A comparison with pressures, GWP, glide, safety class, and field guidance.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/r-454b-vs-r-410a.html">
+    <meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_01_r454b.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "R-454B vs R-410A: Full Pressure & Property Comparison",
+      "description": "Side-by-side R-454B vs R-410A comparison: pressures, GWP, glide, safety class, oil compatibility, and what HVAC techs need to know for the 2025 refrigerant transition.",
+      "author": { "@type": "Organization", "name": "JNPRD" },
+      "publisher": { "@type": "Organization", "name": "FieldCalc HVAC" },
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-07-15"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I use R-454B in an R-410A system?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. R-454B is not a drop-in replacement for R-410A. Although operating pressures are similar, R-454B is an A2L mildly flammable refrigerant and requires equipment specifically designed for A2L service, including compatible compressors, expansion devices, and leak detection. Never mix the two refrigerants." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is R-410A being phased out?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R-410A has a GWP of 2088, which is too high under the EPA AIM Act. The act mandates an 85% reduction in HFC production by 2036. Starting January 1, 2025, R-410A production was cut significantly, pushing manufacturers to adopt lower-GWP alternatives like R-454B (GWP 466)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are R-454B and R-410A pressures the same?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Close but not identical. R-454B runs about 5% higher pressure than R-410A at the same temperature. For example, at 110°F, R-454B bubble pressure is 383 PSIG vs R-410A at 365 PSIG. Gauges and service tools rated for R-410A generally handle R-454B, but always confirm with the equipment manufacturer." }
+        },
+        {
+          "@type": "Question",
+          "name": "What oil does R-454B use?",
+          "acceptedAnswer": { "@type": "Answer", "text": "R-454B uses POE (polyol ester) oil, the same type as R-410A. However, you must use the OEM-specified POE lubricant for each system — not all POE oils are interchangeable. Always follow the manufacturer's charging and oil specification." }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --cold: #32ADE6;
+            --cold-dark: #0E84C7;
+            --warm: #FF9500;
+            --ok: #34C759;
+            --hot: #FF453A;
+            --bg: #0A1620;
+            --surface: #142536;
+            --surface2: #1B2438;
+            --text: #E8EDF4;
+            --text2: #9AA4BD;
+            --text3: #5C6680;
+            --border: rgba(255,255,255,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+        .article { max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; }
+        .breadcrumb { font-size: 0.82rem; color: var(--text3); margin-bottom: 20px; }
+        .breadcrumb a { color: var(--cold); text-decoration: none; }
+        h1 { font-size: 2rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px; }
+        .meta { font-size: 0.85rem; color: var(--text3); margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 36px; margin-bottom: 12px; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 24px; margin-bottom: 8px; }
+        p { font-size: 0.95rem; color: var(--text2); margin-bottom: 14px; }
+        strong { color: var(--text); }
+        .lead { font-size: 1.05rem; color: var(--text); margin-bottom: 24px; }
+
+        .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 12px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th { background: var(--surface2); color: var(--cold); font-weight: 700; padding: 12px 14px; text-align: left; font-size: 0.82rem; letter-spacing: 0.5px; }
+        td { padding: 10px 14px; border-top: 1px solid var(--border); color: var(--text2); }
+        td:first-child { color: var(--text); font-weight: 600; }
+        tr:hover td { background: var(--surface); }
+        .pos { color: var(--ok); font-weight: 600; }
+        .neg { color: var(--hot); font-weight: 600; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 24px 0; }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; }
+        .info-card .label { font-size: 0.72rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .info-card .value { font-size: 1.3rem; font-weight: 700; color: var(--cold); }
+        .info-card .sub { font-size: 0.8rem; color: var(--text2); margin-top: 2px; }
+
+        .cta { background: linear-gradient(135deg, var(--surface), var(--surface2)); border: 1px solid var(--cold); border-radius: 16px; padding: 28px; margin: 36px 0; }
+        .cta h3 { margin-top: 0; color: var(--cold); }
+        .cta p { color: var(--text2); margin-bottom: 16px; }
+        .cta-btn { display: inline-block; background: var(--cold); color: #051018; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none; }
+
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .faq-item h3 { margin-top: 0; font-size: 1rem; }
+        .faq-item p { margin-bottom: 0; }
+
+        .warning { background: rgba(255,149,0,0.08); border: 1px solid rgba(255,149,0,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .warning p { color: var(--text2); margin-bottom: 0; }
+        .warning strong { color: var(--warm); }
+
+        .danger-box { background: rgba(255,69,58,0.08); border: 1px solid rgba(255,69,58,0.25); border-radius: 12px; padding: 18px; margin: 24px 0; }
+        .danger-box p { color: var(--text2); margin-bottom: 0; }
+        .danger-box strong { color: var(--hot); }
+
+        ul { margin: 12px 0 14px 20px; }
+        li { font-size: 0.95rem; color: var(--text2); margin-bottom: 6px; }
+
+        .timeline { border-left: 3px solid var(--cold); padding-left: 24px; margin: 24px 0; }
+        .timeline-item { position: relative; padding-bottom: 20px; }
+        .timeline-item::before { content: ''; position: absolute; left: -30px; top: 6px; width: 12px; height: 12px; background: var(--cold); border-radius: 50%; border: 3px solid var(--bg); }
+        .timeline-item .date { font-size: 0.82rem; color: var(--cold); font-weight: 600; }
+        .timeline-item .text { font-size: 0.92rem; color: var(--text2); margin-top: 4px; }
+
+        .footer { text-align: center; padding: 24px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text3); margin-top: 40px; }
+        .footer a { color: var(--cold); text-decoration: none; margin: 0 8px; }
+    </style>
+</head>
+<body>
+    <article class="article">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> › <a href="../index.html">Blog</a> › R-454B vs R-410A
+        </div>
+
+        <h1>R-454B vs R-410A: Full Pressure &amp; Property Comparison</h1>
+        <div class="meta">Updated July 2026 · By FieldCalc HVAC · 7 min read</div>
+
+        <p class="lead">If you're an HVAC technician, you're about to see a lot more R-454B and a lot less R-410A. The EPA's AIM Act is forcing the switch — but how different are these two refrigerants in the field? This guide compares pressures, properties, safety, and practical considerations so you know exactly what changes (and what doesn't) when you move from R-410A to R-454B.</p>
+
+        <h2>Quick Comparison</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Property</th><th>R-454B</th><th>R-410A</th><th>Difference</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>GWP</td><td>466</td><td>2088</td><td class="pos">−78%</td></tr>
+                    <tr><td>ODP</td><td>0</td><td>0</td><td>Same</td></tr>
+                    <tr><td>Safety Class</td><td>A2L (mildly flammable)</td><td>A1 (non-flammable)</td><td class="neg">⚠️ Different</td></tr>
+                    <tr><td>Glide</td><td>2.0°F</td><td>0.2°F</td><td>+1.8°F</td></tr>
+                    <tr><td>Composition</td><td>68.9% R-32 / 31.1% R-1234yf</td><td>50% R-32 / 50% R-125</td><td>—</td></tr>
+                    <tr><td>Oil</td><td>POE</td><td>POE</td><td>Same type</td></tr>
+                    <tr><td>Discharge Temp</td><td>Lower</td><td>Higher</td><td class="pos">Better for R-454B</td></tr>
+                    <tr><td>Critical Temp</td><td>168°F</td><td>163°F</td><td>+5°F</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Pressure Comparison: R-454B vs R-410A</h2>
+        <p>R-454B runs <strong>about 5% higher pressure</strong> than R-410A at the same saturated temperature. The pressures are close, which is why R-454B is sometimes called a "near-drop-in" — but the equipment is NOT interchangeable.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Temp (°F)</th><th>R-454B Bubble (PSIG)</th><th>R-410A Bubble (PSIG)</th><th>Difference</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>0°F</td><td>27.6</td><td>23.0</td><td>+20%</td></tr>
+                    <tr><td>20°F</td><td>82.0</td><td>78.0</td><td>+5%</td></tr>
+                    <tr><td>40°F</td><td>124.0</td><td>118.0</td><td>+5%</td></tr>
+                    <tr><td>70°F</td><td>211.0</td><td>201.0</td><td>+5%</td></tr>
+                    <tr><td>90°F</td><td>288.0</td><td>274.0</td><td>+5%</td></tr>
+                    <tr><td>110°F</td><td>383.0</td><td>365.0</td><td>+5%</td></tr>
+                    <tr><td>130°F</td><td>500.0</td><td>476.0</td><td>+5%</td></tr>
+                    <tr><td>150°F</td><td>640.0</td><td>608.0</td><td>+5%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text3);">R-454B data: Honeywell Solstice® PT chart. R-410A data: Arkema Forane® PT chart.</p>
+
+        <div class="cta">
+            <h3>📱 Stop memorizing PT charts</h3>
+            <p>FieldCalc HVAC has both R-454B and R-410A PT data built in — plus 11 more refrigerants. Tap, slide, done. Works 100% offline.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+        </div>
+
+        <h2>The Big Difference: Safety Class (A2L vs A1)</h2>
+        <p>This is the single most important difference for field techs.</p>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="label">R-410A</div>
+                <div class="value" style="color: var(--ok);">A1</div>
+                <div class="sub">Non-flammable</div>
+            </div>
+            <div class="info-card">
+                <div class="label">R-454B</div>
+                <div class="value" style="color: var(--warm);">A2L</div>
+                <div class="sub">Mildly flammable</div>
+            </div>
+        </div>
+
+        <p><strong>A2L</strong> means R-454B is <strong>lower flammability</strong> with a <strong>lower burning velocity</strong> (≤10 cm/s). In practical terms:</p>
+        <ul>
+            <li>R-454B will burn under specific conditions (high concentration + ignition source)</li>
+            <li>It's much harder to ignite than R-290 (propane) or even A2/A3 refrigerants</li>
+            <li>Most service practices remain the same, but <strong>follow A2L-safe procedures</strong></li>
+            <li>Equipment must be designed and labeled for A2L use</li>
+        </ul>
+
+        <div class="warning">
+            <p><strong>⚠️ Important:</strong> Do NOT install R-454B in equipment designed only for A1 (non-flammable) refrigerants. A2L systems have specific safety features: leak detection sensors, modified electrical components, and ventilation requirements. Using the wrong refrigerant is a code violation and safety hazard.</p>
+        </div>
+
+        <h2>Temperature Glide: Why It Matters</h2>
+        <p>R-410A is nearly azeotropic — it behaves almost like a single refrigerant. R-454B is a zeotropic blend with a <strong>2°F temperature glide</strong>.</p>
+
+        <h3>What this means in practice:</h3>
+        <ul>
+            <li><strong>R-410A:</strong> One saturation temperature at each pressure. Simple.</li>
+            <li><strong>R-454B:</strong> Two saturation temperatures at each pressure — bubble point and dew point differ by ~2°F.</li>
+        </ul>
+
+        <h3>Which value to use?</h3>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Measurement</th><th>Use</th><th>Why</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Superheat (evaporator)</td><td><strong>Dew point</strong></td><td>Vapor side</td></tr>
+                    <tr><td>Subcooling (condenser)</td><td><strong>Bubble point</strong></td><td>Liquid side</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Using the wrong curve introduces a ~2°F error. For precise charging, always check which curve your PT chart or app uses.</p>
+
+        <h2>Oil Compatibility</h2>
+        <p>Both R-454B and R-410A use <strong>POE (polyol ester)</strong> oil. However:</p>
+        <ul>
+            <li>Not all POE oils are the same viscosity or additive package</li>
+            <li>Always use the OEM-specified POE lubricant</li>
+            <li>Do not mix oils across systems</li>
+            <li>When converting a system (rare — usually only new equipment), follow manufacturer's retrofit procedure</li>
+        </ul>
+
+        <h2>The R-410A Phase-Out Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="date">October 2023</div>
+                <div class="text">EPA AIM Act final rule published — HFC phase-down schedule confirmed.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">January 1, 2025</div>
+                <div class="text"><strong>R-410A production cut 85%.</strong> New AC units switch to R-454B and other low-GWP refrigerants.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2025–2026</div>
+                <div class="text">Carrier, Trane, Lennox, and other major OEMs complete production line transitions to R-454B.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2026+ (Now)</div>
+                <div class="text"><strong>First R-454B systems enter warranty period.</strong> Service market for R-454B grows rapidly. Existing R-410A systems still need service for years.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="date">2036</div>
+                <div class="text">HFC production 85% below baseline. Most residential AC uses low-GWP refrigerants.</div>
+            </div>
+        </div>
+
+        <h2>What This Means for HVAC Techs</h2>
+
+        <h3>You'll work with both for years</h3>
+        <p>R-410A systems aren't disappearing overnight. You'll service existing R-410A equipment for 10-15 more years while also installing and servicing new R-454B systems. You need PT data for <strong>both</strong>.</p>
+
+        <h3>Service tools are mostly compatible</h3>
+        <ul>
+            <li><strong>Manifold gauges:</strong> R-410A-rated gauges handle R-454B pressures (slightly higher but within range)</li>
+            <li><strong>Recovery cylinders:</strong> Use DOT-approved cylinders, never mix refrigerants</li>
+            <li><strong>Vacuum pumps:</strong> Same requirements</li>
+            <li><strong>Leak detectors:</strong> Some R-410A leak detectors may not detect R-454B — check compatibility</li>
+        </ul>
+
+        <h3>Training requirements</h3>
+        <p>Many jurisdictions now require A2L-specific safety training. Check your local codes and EPA Section 608 certification requirements for updates.</p>
+
+        <div class="danger-box">
+            <p><strong>🚫 Never mix refrigerants.</strong> Mixing R-454B and R-410A in the same system creates unpredictable pressures, temperatures, and safety risks. Always recover fully before charging with a different refrigerant. Cross-contaminated refrigerant cannot be reclaimed and must be destroyed.</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>Can I use R-454B in an R-410A system?</h3>
+            <p><strong>No.</strong> R-454B is not a drop-in replacement. Although pressures are similar, R-454B is an A2L mildly flammable refrigerant and requires equipment designed for A2L service. Never mix the two.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Why is R-410A being phased out?</h3>
+            <p>R-410A has a GWP of 2088, too high under the EPA AIM Act. Starting January 2025, R-410A production was cut significantly, pushing manufacturers to lower-GWP alternatives like R-454B (GWP 466).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Are the pressures the same?</h3>
+            <p>Close but not identical. R-454B runs about 5% higher than R-410A. At 110°F, R-454B is 383 PSIG vs R-410A at 365 PSIG. R-410A-rated tools generally handle R-454B, but confirm with the manufacturer.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What oil does R-454B use?</h3>
+            <p>R-454B uses POE (polyol ester) oil, same type as R-410A. But always use the OEM-specified POE lubricant — not all POE oils are interchangeable.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need new gauges for R-454B?</h3>
+            <p>Most R-410A-rated manifold gauges will handle R-454B pressures (slightly higher but within range). However, check that your leak detector is compatible with R-454B and that you have dedicated hoses to avoid cross-contamination.</p>
+        </div>
+
+        <div class="cta">
+            <h3>📱 Carry both PT charts in your pocket</h3>
+            <p>FieldCalc HVAC includes R-454B, R-410A, R-32, and 10 more refrigerants — all offline. Switch between refrigerants with one tap. Free to download.</p>
+            <a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download for iOS →</a>
+        </div>
+
+        <h2>Data Sources</h2>
+        <ul>
+            <li><a href="https://prod-edam.honeywell.com/content/dam/honeywell-edam/pmt/oneam/en-us/refrigerants/documents/hon-ess-am-3161690-adm-tds-pt-chart-solstice-454b-ltr-en.pdf" style="color:var(--cold)">Honeywell Solstice® R-454B PT Chart (PDF)</a></li>
+            <li>Chemours Opteon™ R-454B technical documentation</li>
+            <li><a href="https://www.arkema.com/files/live/sites/shared_arkema/files/downloads/fluorochemicals/forane-410a-pressure-temperature-chart.pdf" style="color:var(--cold)">Arkema Forane® R-410A PT Chart (PDF)</a></li>
+            <li>NIST Reference Fluid Properties (Refprop)</li>
+            <li>EPA AIM Act Final Rule (October 2023)</li>
+            <li>ASHRAE Standard 34 — Refrigerant Safety Classification</li>
+        </ul>
+        <p style="font-size: 0.85rem; color: var(--text3);">This comparison is for field reference only. Always follow OEM specifications, local codes, and EPA regulations.</p>
+
+        <div class="footer">
+            <p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="r-454b-pt-chart.html">R-454B PT Chart</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../support.html">Support</a></p>
+            <p style="margin-top: 8px;">Not affiliated with Honeywell, Chemours, Arkema, ASHRAE, ACCA, or EPA.</p>
+        </div>
+    </article>
+</body>
+</html>
