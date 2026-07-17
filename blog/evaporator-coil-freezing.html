@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaporator Coil Freezing: Causes &amp; Fixes | FieldCalc HVAC</title>
+<meta name="description" content="Complete guide to evaporator coil freezing. Learn the causes — low airflow, low charge, TXV failure — plus a step-by-step diagnostic procedure, safe thaw methods, and prevention tips.">
+<meta name="keywords" content="evaporator coil freezing, ac coil frozen, frozen evaporator coil, frozen ac line, hvac coil ice">
+<meta property="og:title" content="Evaporator Coil Freezing: Causes & Fixes">
+<meta property="og:description" content="Diagnose and fix a frozen evaporator coil. Covers low airflow, low charge, TXV failure, thaw procedure, and prevention.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/evaporator-coil-freezing.html">
+<meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Evaporator Coil Freezing: Causes & Fixes","author":{"@type":"Organization","name":"JNPRD"},"publisher":{"@type":"Organization","name":"FieldCalc HVAC"},"datePublished":"2026-07-17"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What causes an evaporator coil to freeze?","acceptedAnswer":{"@type":"Answer","text":"An evaporator coil freezes when its temperature drops below 32°F and moisture in the air condenses and freezes on it. The two root causes are restricted airflow across the coil (dirty filter, dirty coil, weak blower) or low refrigerant charge (leak). Less common: a TXV stuck closed, a dirty indoor coil, or operating the system below 60°F outdoor ambient."}},
+{"@type":"Question","name":"How do I thaw a frozen AC coil?","acceptedAnswer":{"@type":"Answer","text":"Turn the AC off at the thermostat but switch the fan to ON. Warm indoor air moving across the coil melts the ice in 1 to 4 hours. Do not use heat guns, knives, or hot water — you will damage the delicate aluminum fins. Place towels around the unit and verify the condensate drain is clear before restarting."}},
+{"@type":"Question","name":"Will low refrigerant cause a coil to freeze?","acceptedAnswer":{"@type":"Answer","text":"Yes. A low charge drops the pressure in the evaporator, which lowers the refrigerant's boiling (saturated) temperature. If the saturated temperature falls below 32°F, the moisture on the coil freezes. A system running at 25°F saturated coil temperature is essentially a freezer. This is the classic 'low-side freezes, high-side runs warm' pattern."}},
+{"@type":"Question","name":"How do I prevent my AC coil from freezing again?","acceptedAnswer":{"@type":"Answer","text":"Change filters monthly, keep return and supply registers open and unblocked, schedule annual coil cleaning, verify blower CFM on every service call, and fix refrigerant leaks promptly instead of just topping off. On commercial systems with low-load conditions, install a low-ambient or freeze-protection control."}}
+]}
+</script>
+<style>
+:root{--cold:#32ADE6;--cold-dark:#0E84C7;--warm:#FF9500;--ok:#34C759;--hot:#FF453A;--bg:#0A1620;--surface:#142536;--surface2:#1B2438;--text:#E8EDF4;--text2:#9AA4BD;--text3:#5C6680;--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+.article{max-width:780px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--text3);margin-bottom:20px}.breadcrumb a{color:var(--cold);text-decoration:none}
+h1{font-size:2rem;font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{font-size:.85rem;color:var(--text3);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:1.4rem;font-weight:700;margin-top:36px;margin-bottom:12px}
+h3{font-size:1.1rem;font-weight:600;margin-top:24px;margin-bottom:8px}
+p{font-size:.95rem;color:var(--text2);margin-bottom:14px}
+strong{color:var(--text)}.lead{font-size:1.05rem;color:var(--text);margin-bottom:24px}
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--surface2);color:var(--cold);font-weight:700;padding:12px 14px;text-align:left;font-size:.82rem;letter-spacing:.5px}
+td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text2)}td:first-child{color:var(--text);font-weight:600}
+tr:hover td{background:var(--surface)}
+.cta{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--cold);border-radius:16px;padding:28px;margin:36px 0}
+.cta h3{margin-top:0;color:var(--cold)}.cta p{color:var(--text2);margin-bottom:16px}
+.cta-btn{display:inline-block;background:var(--cold);color:#051018;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{margin-top:0;font-size:1rem}.faq-item p{margin-bottom:0}
+.warning{background:rgba(255,149,0,0.08);border:1px solid rgba(255,149,0,0.25);border-radius:12px;padding:18px;margin:24px 0}
+.warning p{color:var(--text2);margin-bottom:0}.warning strong{color:var(--warm)}
+ul{margin:12px 0 14px 20px}li{font-size:.95rem;color:var(--text2);margin-bottom:6px}
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text3);margin-top:40px}
+.footer a{color:var(--cold);text-decoration:none;margin:0 8px}
+.related{margin:40px 0 0}.related h2{font-size:1.2rem;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:border-color .2s}
+.related-card:hover{border-color:var(--cold)}
+.related-card .tag{font-size:.7rem;color:var(--cold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.related-card .title{font-size:.92rem;font-weight:600;color:var(--text)}
+.related-card .desc{font-size:.82rem;color:var(--text3);margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+<article class="article">
+<div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › Evaporator Coil Freezing</div>
+<h1>Evaporator Coil Freezing: Causes &amp; Fixes</h1>
+<div class="meta">Updated July 2026 · By FieldCalc HVAC · 10 min read</div>
+<p class="lead">A frozen evaporator coil is one of the most common — and most damaging — AC problems. Ice on the coil blocks airflow, kills cooling capacity, and can slug the compressor with liquid refrigerant. This guide covers the four root causes, a step-by-step diagnostic procedure, how to thaw the coil safely, and how to prevent it from coming back. The golden rule: <strong>ABC — Airflow Before Charge.</strong></p>
+
+<h2>How a Coil Freezes (The Physics)</h2>
+<p>The evaporator coil is colder than the air passing over it — typically around 40°F saturated when the system is operating correctly. Moisture from the air condenses on the cold fins and runs out the condensate drain. But if the <strong>coil temperature drops below 32°F</strong>, that condensate freezes instead of draining. Once a layer of ice forms, it acts as insulation, the coil gets even colder, and the ice thickens rapidly.</p>
+<p>Two things drop the coil temperature below freezing:</p>
+<ol style="margin:12px 0 14px 20px;color:var(--text2)">
+<li><strong>Reduced heat load</strong> — less warm air crossing the coil means less heat absorbed by the refrigerant, which lowers the coil temperature. Cause: low airflow.</li>
+<li><strong>Low refrigerant pressure</strong> — lower pressure means lower boiling temperature. Cause: low charge.</li>
+</ol>
+<p>Every frozen coil traces back to one (or both) of these.</p>
+
+<h2>The Four Root Causes</h2>
+
+<h3>1. Low Airflow Across the Coil (Most Common)</h3>
+<p>Anything that reduces the volume of warm air crossing the evaporator drops the coil temperature. The usual suspects, in order of frequency:</p>
+<ul>
+<li><strong>Dirty air filter</strong> — the #1 cause. A clogged filter chokes the system.</li>
+<li><strong>Closed or blocked supply/return registers</strong> — furniture, rugs, or closed doors in a zoned system without bypass.</li>
+<li><strong>Dirty evaporator coil</strong> — a layer of dust and biofilm on the fins reduces heat transfer.</li>
+<li><strong>Collapsed or kinked duct</strong> — restricts CFM.</li>
+<li><strong>Undersized or dirty return grilles</strong> — common in finished basements and additions.</li>
+<li><strong>Weak blower motor</strong> — failing capacitor, worn bearings, wrong speed tap, or a mis-sized wheel.</li>
+</ul>
+
+<h3>2. Low Refrigerant Charge (Leak)</h3>
+<p>Systems don't consume refrigerant. A low charge means a leak. As charge drops, evaporator pressure drops, and with it the saturated (boiling) temperature. A coil running at 25°F saturated instead of 40°F will freeze solid in an hour.</p>
+<p>Classic signs: warm supply air, low suction pressure, high superheat, low subcooling, frozen suction line, hissing at the indoor coil. Verify with manifold gauges and a <a href="how-to-check-superheat.html" style="color:var(--cold)">superheat</a>/<a href="how-to-check-subcooling.html" style="color:var(--cold)">subcooling</a> check.</p>
+
+<h3>3. Metering Device Problem (TXV / EEV)</h3>
+<p>The TXV (thermostatic expansion valve) or EEV (electronic expansion valve) regulates refrigerant flow into the evaporator. If it <strong>sticks closed</strong> (starving the coil), the evaporator pressure drops and the coil can freeze. Symptoms: very low suction pressure, very high superheat, and a cold suction line that still freezes even though the system is undercharged on paper.</p>
+<p>Less commonly, an orifice that's <strong>too small</strong> (wrong piston installed at install) or a partially plugged filter drier upstream of the metering device will produce the same pattern.</p>
+
+<h3>4. Operating the System Outside Its Design Range</h3>
+<p>Running AC when the outdoor ambient is below 60°F (without a low-ambient kit) drops the load on the coil and can cause freezing. Same with operating a system in a space with very low heat load (a server room sized for a hot day, but it's a cool night). Commercial and process systems often need a <strong>low-ambient control</strong> (head-pressure control, fan-cycling, or hot-gas bypass) to prevent this.</p>
+
+<h2>Diagnostic Procedure — Step by Step</h2>
+<p>Follow this sequence on every frozen-coil call. Do not skip ahead to refrigerant.</p>
+
+<h3>Step 1: Inspect and Thaw First</h3>
+<p>You can't diagnose a frozen coil while it's frozen. Shut off cooling at the thermostat, set fan to ON, and let the coil thaw completely. <strong>This is mandatory</strong> — frozen fins will read the wrong temperatures and pressures, and connecting gauges to a frozen system gives meaningless numbers.</p>
+
+<h3>Step 2: Check the Filter and Airflow</h3>
+<p>Pull the filter. If it's loaded, you've likely found your cause. While you're at it:</p>
+<ul>
+<li>Inspect the evaporator coil through the access panel — is it clogged with dirt or biofilm?</li>
+<li>Walk the home and confirm all supply and return registers are open and unobstructed.</li>
+<li>Verify the blower wheel is clean and the blower capacitor is within spec.</li>
+<li>Measure delivered CFM (total external static pressure vs. the blower performance chart). Target: 350–450 CFM per ton.</li>
+</ul>
+
+<h3>Step 3: Verify Charge</h3>
+<p>Once airflow is confirmed good and the coil is dry, install gauges and check superheat (fixed orifice) or subcooling (TXV systems). If charge is low, you have a leak — locate and repair it before adding refrigerant. Never "top off" without fixing the leak.</p>
+
+<h3>Step 4: Check the Metering Device</h3>
+<p>If airflow and charge are correct but the coil still freezes, suspect the TXV. Symptoms:</p>
+<ul>
+<li>Suction pressure hunting or dropping below normal.</li>
+<li>Superheat far above target (15°F+ on a system that should be at 8–12°F).</li>
+<li>Subcooling normal or slightly high (charge is correct, just not metering in).</li>
+<li>Cold/frozen distributor tubes at the coil inlet while suction pressure is low.</li>
+</ul>
+<p>Check the TXV bulb: clamped securely to a clean, horizontal section of suction line, insulated, and oriented per the OEM (sensing bulb on top or 4 o'clock depending on size). If the bulb is loose, dirty, or in the wrong position, fix it before condemning the valve.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Symptom Pattern</th><th>Likely Cause</th><th>Confirm With</th></tr></thead>
+<tbody>
+<tr><td>Dirty filter + low CFM + normal pressures</td><td>Low airflow</td><td>Static pressure test</td></tr>
+<tr><td>Low suction, high superheat, low subcooling</td><td>Low charge (leak)</td><td>Leak search, superheat/subcooling</td></tr>
+<tr><td>Low suction, very high superheat, normal subcooling</td><td>TXV stuck closed</td><td>Bulb check, superheat ramp</td></tr>
+<tr><td>Freezes only at night or low load</td><td>Low ambient / low load</td><td>Outdoor temp at failure, controls check</td></tr>
+<tr><td>Sweating and freezing only on first row of coil</td><td>Restricted airflow pattern / dirty coil</td><td>Coil inspection</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="warning">
+<p><strong>Critical:</strong> A frozen coil running for hours can <strong>slug the compressor with liquid refrigerant</strong>, washing oil out of the bearings and causing catastrophic failure. If you arrive at a frozen system still running, shut it off immediately and let it thaw before doing anything else.</p>
+</div>
+
+<h2>How to Thaw a Frozen Coil — Safely</h2>
+<ol style="margin:12px 0 14px 20px;color:var(--text2)">
+<li><strong>Turn the thermostat to OFF, fan to ON.</strong> Warm indoor air flowing across the coil is the safest thaw method.</li>
+<li><strong>Wait 1–4 hours.</strong> A small freeze thaws in under an hour; a fully frozen coil with ice on the suction line can take 3–4 hours.</li>
+<li><strong>Place towels</strong> around the indoor unit and check the condensate pan — it will overflow as ice melts.</li>
+<li><strong>Verify the condensate drain is clear</strong> before restarting. A frozen coil often produces enough water to flood if the drain is clogged.</li>
+<li><strong>Do NOT use a heat gun, hair dryer, hot water, or a knife</strong> to speed the thaw. The aluminum fins bend under fingertip pressure — a heat gun or scraper will destroy the coil.</li>
+</ol>
+
+<div class="cta">
+<h3>📱 Diagnose freeze-ups faster in the field</h3>
+<p>FieldCalc HVAC computes superheat, subcooling, and CFM targets so you can confirm airflow and charge in seconds. Works offline — perfect for those late-night no-cooling calls.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+</div>
+
+<h2>Preventing Future Freeze-Ups</h2>
+<p>Prevention is cheaper than service calls and compressor replacements. Best practices for homeowners and techs:</p>
+<ul>
+<li><strong>Change the filter monthly</strong> during peak season. A $10 filter prevents a $5,000 compressor.</li>
+<li><strong>Keep every register open</strong> — closing off rooms is the second most common cause of frozen coils.</li>
+<li><strong>Schedule annual professional maintenance</strong> that includes coil inspection and cleaning.</li>
+<li><strong>Verify blower CFM</strong> on every service call — measure external static pressure and compare to the OEM chart.</li>
+<li><strong>Fix refrigerant leaks properly</strong> — never just top off. Locate, repair, and re-pressurize with a weighed charge.</li>
+<li><strong>Install a freeze sensor</strong> on commercial systems and any system prone to low load.</li>
+<li><strong>On low-ambient operation</strong> (running AC below 60°F outdoor), install a fan-cycling control or head-pressure control.</li>
+</ul>
+
+<h2>Special Cases</h2>
+
+<h3>Heat Pump Freeze in Winter</h3>
+<p>A light frost on the outdoor coil in winter is normal — that's why heat pumps have defrost cycles. But a <strong>thick ice block</strong> that doesn't clear after a defrost cycle suggests a defrost board failure, a bad defrost sensor, or low charge. Check the defrost control sequence before condemning the refrigerant circuit.</p>
+
+<h3>Mini-Split Indoor Unit Freezing</h3>
+<p>Wall-mounted ductless indoor units freeze for the same reasons, but the causes skew toward <strong>plugged drain pans</strong> (biofilm/algae) and <strong>dirty blower wheels</strong>. Pull the front cover and inspect both every service visit. Mini-splits also commonly freeze when set too low (e.g., 65°F) at night when the load drops.</p>
+
+<h3>Commercial Walk-In Freezer / Cooler</h3>
+<p>In refrigeration, freezing on the evaporator is called <strong>icing</strong> and is expected. But excessive ice means either a defrost problem (timer, heater, termination thermostat), airflow problem (iced fan, blocked coil), or a TXV problem. Defrost cycles should clear ice within 30–45 minutes; if ice persists, troubleshoot the defrost circuit first.</p>
+
+<h2>Putting It All Together</h2>
+<p>A frozen coil always has a cause, and the cause is almost always airflow or charge — in that order. Resist the temptation to jump straight to refrigerant; nine times out of ten the fix is a new filter, an open register, or a cleaned coil. When you do find a low charge, fix the leak rather than topping off. And on every call, verify blower CFM with a static pressure reading. Do those four things and frozen-coil callbacks will all but disappear.</p>
+
+<div class="cta" style="padding:20px">
+<h3 style="font-size:1.05rem;margin-bottom:8px">Diagnose freeze-ups fast</h3>
+<p style="margin-bottom:12px">Superheat, subcooling, and CFM targets in your pocket — perfect for late-night no-cooling calls.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740" style="padding:12px 24px">Get FieldCalc HVAC →</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>What causes an evaporator coil to freeze?</h3><p>An evaporator coil freezes when its temperature drops below 32°F and condensate freezes on the fins. Root causes: restricted airflow (dirty filter, dirty coil, weak blower) or low charge (leak). Less common: TXV stuck closed, low-ambient operation, or undersized duct.</p></div>
+<div class="faq-item"><h3>How do I thaw a frozen AC coil?</h3><p>Turn the AC off at the thermostat but leave the fan on ON. Warm air moving across the coil melts the ice in 1–4 hours. Don't use heat guns, knives, or hot water — they will damage the aluminum fins. Verify the condensate drain is clear before restarting.</p></div>
+<div class="faq-item"><h3>Will low refrigerant cause a coil to freeze?</h3><p>Yes. Low charge drops evaporator pressure, which lowers the refrigerant's boiling temperature. If saturated coil temperature falls below 32°F, the condensate freezes. A system running at 25°F saturated is essentially a freezer. This is the classic low-side freezes / high-side runs warm pattern.</p></div>
+<div class="faq-item"><h3>How do I prevent my AC coil from freezing again?</h3><p>Change filters monthly, keep registers open and unblocked, schedule annual coil cleaning, verify blower CFM on every service call, and fix leaks properly. On low-load systems, install a freeze sensor or low-ambient control.</p></div>
+
+<div class="related">
+<h2>Related Guides</h2>
+<div class="related-grid">
+<a class="related-card" href="ac-not-cooling.html"><div class="tag">Diagnosis</div><div class="title">AC Not Cooling</div><div class="desc">A frozen coil is one of the 10 most common no-cooling causes.</div></a>
+<a class="related-card" href="how-to-check-superheat.html"><div class="tag">Tutorial</div><div class="title">How to Check Superheat</div><div class="desc">Verify charge and metering-device performance.</div></a>
+<a class="related-card" href="how-to-check-subcooling.html"><div class="tag">Tutorial</div><div class="title">How to Check Subcooling</div><div class="desc">Companion charge check for TXV systems.</div></a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="index.html">Guides</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></p>
+<p style="margin-top:8px;">Field reference only — follow OEM specifications and local codes.</p>
+</div>
+</article>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HVAC Duct Installation: Best Practices | FieldCalc HVAC</title>
+<meta name="description" content="Field guide to HVAC duct installation best practices. Covers codes and standards, sizing, sealing with mastic, support spacing, insulation, leak testing, commissioning, and the most common installation errors.">
+<meta name="keywords" content="hvac duct installation, duct installation guide, ductwork best practices, duct sealing, duct insulation">
+<meta property="og:title" content="HVAC Duct Installation: Best Practices">
+<meta property="og:description" content="Field guide to installing HVAC ductwork correctly — codes, sealing, support, insulation, leak testing, and commissioning.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/hvac-duct-installation.html">
+<meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"HVAC Duct Installation: Best Practices","author":{"@type":"Organization","name":"JNPRD"},"publisher":{"@type":"Organization","name":"FieldCalc HVAC"},"datePublished":"2026-07-17"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the standard for HVAC duct installation?","acceptedAnswer":{"@type":"Answer","text":"The primary standard is the International Residential Code (IRC) and International Mechanical Code (IMC), supplemented by ACCA Manual J (load), Manual D (duct sizing), Manual T (registers), and SMACNA HVAC Duct Construction Standards for fabrication. Energy codes (IECC) require sealed ducts and total leakage limits."}},
+{"@type":"Question","name":"What is the best way to seal ductwork?","acceptedAnswer":{"@type":"Answer","text":"Use mastic sealant (brushed or troweled on) over mechanically fastened joints. Mesh tape is used to bridge gaps wider than 1/8 inch. Duct tape is NOT an acceptable sealant and will fail within months. UL-181 foil tape or mastic-plus-fabric systems are acceptable for flex and sheet metal joints."}},
+{"@type":"Question","name":"How much duct leakage is acceptable?","acceptedAnswer":{"@type":"Answer","text":"For new residential construction tested at rough-in, total leakage should be 4 CFM25 per 100 sq ft of conditioned floor area or less per IECC. For ducts entirely inside the conditioned envelope the limit is 8 CFM25/100 sq ft. Existing systems often run 15-30% leakage, which is why sealing retrofits save so much energy."}},
+{"@type":"Question","name":"How far apart should duct supports be?","acceptedAnswer":{"@type":"Answer","text":"For flexible duct, supports are spaced every 4 feet maximum (per IMC 603.6) and within 4 inches of each connection. For sheet metal, hanger spacing is typically every 8-10 feet depending on size. Sag in flex duct between supports must not exceed 1/2 inch per foot."}}
+]}
+</script>
+<style>
+:root{--cold:#32ADE6;--cold-dark:#0E84C7;--warm:#FF9500;--ok:#34C759;--hot:#FF453A;--bg:#0A1620;--surface:#142536;--surface2:#1B2438;--text:#E8EDF4;--text2:#9AA4BD;--text3:#5C6680;--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+.article{max-width:780px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--text3);margin-bottom:20px}.breadcrumb a{color:var(--cold);text-decoration:none}
+h1{font-size:2rem;font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{font-size:.85rem;color:var(--text3);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:1.4rem;font-weight:700;margin-top:36px;margin-bottom:12px}
+h3{font-size:1.1rem;font-weight:600;margin-top:24px;margin-bottom:8px}
+p{font-size:.95rem;color:var(--text2);margin-bottom:14px}
+strong{color:var(--text)}.lead{font-size:1.05rem;color:var(--text);margin-bottom:24px}
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--surface2);color:var(--cold);font-weight:700;padding:12px 14px;text-align:left;font-size:.82rem;letter-spacing:.5px}
+td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text2)}td:first-child{color:var(--text);font-weight:600}
+tr:hover td{background:var(--surface)}
+.cta{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--cold);border-radius:16px;padding:28px;margin:36px 0}
+.cta h3{margin-top:0;color:var(--cold)}.cta p{color:var(--text2);margin-bottom:16px}
+.cta-btn{display:inline-block;background:var(--cold);color:#051018;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{margin-top:0;font-size:1rem}.faq-item p{margin-bottom:0}
+.warning{background:rgba(255,149,0,0.08);border:1px solid rgba(255,149,0,0.25);border-radius:12px;padding:18px;margin:24px 0}
+.warning p{color:var(--text2);margin-bottom:0}.warning strong{color:var(--warm)}
+ul{margin:12px 0 14px 20px}li{font-size:.95rem;color:var(--text2);margin-bottom:6px}
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text3);margin-top:40px}
+.footer a{color:var(--cold);text-decoration:none;margin:0 8px}
+.related{margin:40px 0 0}.related h2{font-size:1.2rem;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:border-color .2s}
+.related-card:hover{border-color:var(--cold)}
+.related-card .tag{font-size:.7rem;color:var(--cold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.related-card .title{font-size:.92rem;font-weight:600;color:var(--text)}
+.related-card .desc{font-size:.82rem;color:var(--text3);margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+<article class="article">
+<div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › HVAC Duct Installation</div>
+<h1>HVAC Duct Installation: Best Practices</h1>
+<div class="meta">Updated July 2026 · By FieldCalc HVAC · 12 min read</div>
+<p class="lead">A great AC with bad ductwork is a bad AC. Industry studies show the average residential duct system leaks 20–30% of conditioned air — energy that's paid for but never reaches the rooms. This guide covers the standards, materials, sealing, support, insulation, and commissioning steps that separate a proper duct installation from a callback waiting to happen.</p>
+
+<h2>Codes and Standards You Must Follow</h2>
+<p>Ductwork in the U.S. is governed by a stack of overlapping codes and industry standards. Knowing which apply is the first step to a code-compliant install.</p>
+<ul>
+<li><strong>IMC (International Mechanical Code)</strong> — adopted by most jurisdictions; covers materials, support, clearance, dampers, and leak testing.</li>
+<li><strong>IRC (International Residential Code)</strong> — Section M1603 covers residential duct systems, including sizing and sealing.</li>
+<li><strong>IECC (International Energy Conservation Code)</strong> — duct sealing, leakage testing, and minimum insulation R-values.</li>
+<li><strong>ACCA Manual J</strong> — load calculation that drives duct sizing.</li>
+<li><strong>ACCA Manual D</strong> — residential duct sizing methodology (friction and equivalent lengths).</li>
+<li><strong>ACCA Manual T</strong> — register and grille selection.</li>
+<li><strong>SMACNA HVAC Duct Construction Standards</strong> — fabrication, gauge, reinforcement, sealing classes (A, B, C) for commercial sheet metal.</li>
+<li><strong>UL 181</strong> — listing for duct materials, tapes, mastics, and closures.</li>
+</ul>
+<p>Always verify the local adopted code edition with the AHJ (authority having jurisdiction) before starting work — local amendments can be stricter.</p>
+
+<h2>Sizing Done Right</h2>
+<p>Duct sizing is not a guess or a "rule of thumb." The proper sequence is:</p>
+<ol style="margin:12px 0 14px 20px;color:var(--text2)">
+<li><strong>Manual J load calculation</strong> — determine the heating and cooling load for every room (Btuh). See our <a href="hvac-load-calculation.html" style="color:var(--cold)">HVAC load calculation guide</a>.</li>
+<li><strong>Manual D duct sizing</strong> — size trunks and branches to deliver the required CFM to each room while staying within friction limits and available static pressure.</li>
+<li><strong>Manual T register/grille selection</strong> — choose face velocities and throw distances appropriate to the room.</li>
+<li><strong>Select equipment</strong> with a blower performance curve that meets the total external static pressure (TESP) your duct design produces.</li>
+</ol>
+<p>Target delivered airflow: <strong>350–450 CFM per ton of cooling</strong> and ~12,000–15,000 Btuh per ton. A <a href="duct-sizing-calculator.html" style="color:var(--cold)">duct sizing calculator</a> speeds the friction-rate math.</p>
+
+<div class="warning">
+<p><strong>Rule of thumb kills systems:</strong> "One ton per 400–600 sq ft" is a starting point at best. Real Manual J loads vary ±50% based on insulation, windows, orientation, and climate. Undersized ducts starve the coil and freeze it; oversized ducts cost more and short-cycle.</p>
+</div>
+
+<h2>Materials</h2>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Material</th><th>Typical Use</th><th>Pros / Cons</th></tr></thead>
+<tbody>
+<tr><td>Galvanized sheet metal</td><td>Trunks, long runs, commercial</td><td>Lowest friction, longest life / higher cost and skill</td></tr>
+<tr><td>Flexible duct (flex)</td><td>Branch runs to registers</td><td>Cheap, fast, forgiving / high friction, easy to abuse</td></tr>
+<tr><td>Fiberglass duct board</td><td>Trunks in some markets</td><td>Built-in thermal/acoustic / degrades, hard to clean</td></tr>
+<tr><td>Spiral / round metal</td><td>Exposed and commercial</td><td>Good airflow, looks clean / needs fab shop</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Flex duct is fine — and very common — but only when installed correctly. The cardinal rules: keep it straight, support it properly, never use it for the entire system, and never exceed OEM length recommendations (typically a 90° elbow equals 30 ft of straight pipe in equivalent length).</p>
+
+<h2>Fabrication and Assembly</h2>
+<ul>
+<li><strong>Mechanically fasten every joint</strong> — sheet-metal screws every 6–8 inches on round, drives and S-slips on rectangular. Friction-fit is not acceptable.</li>
+<li><strong>De-burr cut ends</strong> — sharp edges cut into flex inner liners and damage gaskets.</li>
+<li><strong>Install turning vanes</strong> in rectangular 90° elbows to reduce turbulence and equivalent length.</li>
+<li><strong>Use long-radius elbows</strong> (1.5× duct diameter centerline radius) on round metal runs.</li>
+<li><strong>Keep flex runs as short as possible</strong> and fully extended — a sagging or compressed flex run has 5–10× the friction of a stretched one.</li>
+</ul>
+
+<h2>Sealing — The Single Most Important Step</h2>
+<p>Duct leakage is the #1 efficiency killer in residential HVAC. Three things make a leak-free system:</p>
+
+<h3>1. Mastic, Not Tape</h3>
+<p>Brush or trowel <strong>mastic sealant</strong> (UL-181 listed) on every joint, seam, and connection. For gaps wider than 1/8 inch, embed fiberglass mesh tape into the mastic. Mastic stays flexible for decades; tape fails. <strong>Duct tape must never be used as a primary sealant</strong> — it dries out, cracks, and peels within months.</p>
+
+<h3>2. Tape Where Appropriate</h3>
+<p>UL-181 listed foil tape is acceptable for flex connections and as a secondary seal over mastic. The tape must be listed, applied to clean dry surfaces, and pressed down with a squeegee — not just slapped on.</p>
+
+<h3>3. Test, Don't Assume</h3>
+<p>Pressure-test the system with a duct blaster at rough-in. The IECC limit for total leakage at rough-in is <strong>≤ 4 CFM25 per 100 sq ft of conditioned floor area</strong>, or ≤ 8 CFM25/100 if all ducts are inside the conditioned envelope. If you fail the test, find and seal the leaks — don't paper over it.</p>
+
+<h2>Support and Hangers</h2>
+<p>Improper support causes sag, kinks, joint separation, and condensate pooling. Follow the IMC requirements:</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Duct Type</th><th>Max Support Spacing</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Flexible duct (horizontal)</td><td>Every 4 ft</td><td>Within 4 in of each connection; sag ≤ 0.5 in/ft</td></tr>
+<tr><td>Flexible duct (vertical)</td><td>Every 6 ft</td><td>Plus a support within 6 in of upper connection</td></tr>
+<tr><td>Sheet metal (round)</td><td>Every 8–10 ft</td><td>Saddle or clevis hangers; 1.5 in clearance</td></tr>
+<tr><td>Sheet metal (rectangular)</td><td>Every 8–12 ft</td><td>Trapeze hangers for stacked runs</td></tr>
+<tr><td>Fiberglass board</td><td>Every 4 ft</td><td>Wide saddle to avoid crushing</td></tr>
+</tbody>
+</table>
+</div>
+<p>Use wide (≥1.5 in) saddles on flex to avoid crushing the insulation. Never support flex by the wire helix alone — that causes tears. Never use wire, string, or zip ties smaller than 1.5 in wide.</p>
+
+<h2>Insulation and Vapor Barrier</h2>
+<p>Ducts in unconditioned spaces (attics, crawlspaces, garages) must be insulated to the local energy-code minimum — typically <strong>R-8 in attics</strong> and <strong>R-6 in crawlspaces, basements, and exterior walls</strong>. Inside the conditioned envelope, R-4.2 or no insulation is often acceptable.</p>
+<ul>
+<li><strong>Maintain a continuous vapor barrier</strong> on the warm side of the insulation in humid climates. Gaps cause condensation inside the insulation and water staining on ceilings.</li>
+<li><strong>Seal vapor barrier seams</strong> with UL-181 tape or mastic.</li>
+<li><strong>Insulate boots and connections</strong> at registers — they're a major condensation source and often missed.</li>
+<li><strong>Don't compress insulation</strong> — compressed fiberglass loses R-value.</li>
+</ul>
+
+<h2>Dampers, Boots, and Registers</h2>
+<ul>
+<li><strong>Balance dampers</strong> — install in every branch at the takeoff, not at the register. Mark damper positions with a balancing report.</li>
+<li><strong>Zone dampers</strong> — always include a bypass or use a manufacturer-approved zoning strategy to avoid over-pressurizing a zone with one register open.</li>
+<li><strong>Boots</strong> — seal the boot-to-drywall gap with mastic or foam on the conditioned side; this is a major leakage point.</li>
+<li><strong>Registers</strong> — choose throw and pattern for the room; high supply, low return is standard. Avoid short-circuiting supply into a nearby return.</li>
+</ul>
+
+<h2>Commissioning and Acceptance</h2>
+<p>A duct system is not done until it's tested and balanced. Final commissioning:</p>
+<ol style="margin:12px 0 14px 20px;color:var(--text2)">
+<li><strong>Duct blaster test</strong> — verify leakage below the IECC limit.</li>
+<li><strong>Total external static pressure (TESP)</strong> — measure across the blower; compare to the OEM chart. Residential target: 0.5 in w.c. or less.</li>
+<li><strong>Delivered CFM</strong> — verify each branch delivers design airflow with a flow hood or anemometer traverse.</li>
+<li><strong>Temperature split</strong> — measure return-to-supply ΔT; target 18–22°F on a properly charged residential AC.</li>
+<li><strong>Balancing report</strong> — record damper positions, CFM, and TESP. Hand a copy to the homeowner.</li>
+<li><strong>Combustion safety</strong> — for systems sharing a mechanical room with combustion appliances, verify draft and spillage under worst-case exhaust operation.</li>
+</ol>
+
+<div class="cta">
+<h3>📱 Right-size ducts and loads in the field</h3>
+<p>FieldCalc HVAC includes Manual J-style load estimates and a duct sizing calculator so you can size trunks and branches accurately at the job site. Works offline.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+</div>
+
+<h2>Common Installation Mistakes</h2>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Mistake</th><th>Consequence</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Duct tape as primary seal</td><td>Fails within a year, massive leakage</td><td>Always use mastic</td></tr>
+<tr><td>Compressed or sagging flex</td><td>High friction, low CFM, noise</td><td>Cut to length, support every 4 ft</td></tr>
+<tr><td>Boots left unsealed to drywall</td><td>Major leak into wall cavities</td><td>Seal with mastic or foam</td></tr>
+<tr><td>Sharp 90° elbows at takeoffs</td><td>Equivalent to 30+ ft of pipe</td><td>Use long-radius or turning vanes</td></tr>
+<tr><td>Panning joist cavities as returns</td><td>Leaky, draws from attic/wall</td><td>Use hard-ducted returns</td></tr>
+<tr><td>No balance dampers</td><td>System can never be balanced</td><td>Add dampers at takeoffs</td></tr>
+<tr><td>Crushed insulation under straps</td><td>Condensation, water damage</td><td>Use 1.5 in+ wide saddles</td></tr>
+<tr><td>Unsupported vertical runs</td><td>Sag, joint failure</td><td>Support per IMC tables</td></tr>
+<tr><td>Supply blowing into return</td><td>Short-cycling, no cooling</td><td>Relocate, redesign throws</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Putting It All Together</h2>
+<p>The difference between a great duct system and a poor one is almost entirely in the details: mastic instead of tape, supports at the right spacing, fully extended flex, sealed boots, balanced dampers, and a leak test at the end. None of these are hard — they just take discipline. Get the load right with Manual J, size with Manual D, seal everything with mastic, test with a duct blaster, and commission with a balancing report. Do that on every job and callbacks, comfort complaints, and efficiency losses drop dramatically.</p>
+
+<div class="cta" style="padding:20px">
+<h3 style="font-size:1.05rem;margin-bottom:8px">Right-size every duct system</h3>
+<p style="margin-bottom:12px">Manual J-style load estimates and duct sizing calculators, ready on the job site.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740" style="padding:12px 24px">Get FieldCalc HVAC →</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>What is the standard for HVAC duct installation?</h3><p>The primary codes are the IRC and IMC, supported by ACCA Manual J (loads), Manual D (duct sizing), Manual T (registers), and SMACNA for fabrication. IECC adds leakage testing and insulation requirements.</p></div>
+<div class="faq-item"><h3>What is the best way to seal ductwork?</h3><p>Use mastic sealant over mechanically fastened joints. Mesh tape bridges gaps wider than 1/8 in. Duct tape is never an acceptable sealant and will fail within months. UL-181 foil tape is acceptable for flex and as secondary seal over mastic.</p></div>
+<div class="faq-item"><h3>How much duct leakage is acceptable?</h3><p>For new residential rough-in, total leakage should be ≤ 4 CFM25 per 100 sq ft of conditioned floor (IECC). For ducts entirely inside the conditioned envelope the limit is 8 CFM25/100. Existing systems often leak 15–30%.</p></div>
+<div class="faq-item"><h3>How far apart should duct supports be?</h3><p>For flex duct, every 4 ft maximum, within 4 in of each connection, with sag no more than 0.5 in/ft. For sheet metal, every 8–10 ft typically. Always follow IMC tables and OEM instructions.</p></div>
+
+<div class="related">
+<h2>Related Guides</h2>
+<div class="related-grid">
+<a class="related-card" href="duct-sizing-calculator.html"><div class="tag">Calculator</div><div class="title">Duct Sizing Calculator</div><div class="desc">Friction-rate sizing for trunks and branches.</div></a>
+<a class="related-card" href="what-size-ac-do-i-need.html"><div class="tag">Sizing</div><div class="title">What Size AC Do I Need?</div><div class="desc">Equipment sizing starts here — then size ducts.</div></a>
+<a class="related-card" href="psychrometric-chart.html"><div class="tag">Reference</div><div class="title">Psychrometric Chart</div><div class="desc">Air properties that govern duct airflow and ΔT.</div></a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="index.html">Guides</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></p>
+<p style="margin-top:8px;">Field reference only — follow OEM specifications, IRC/IMC/IECC, and local codes.</p>
+</div>
+</article>
+</body>
+</html>

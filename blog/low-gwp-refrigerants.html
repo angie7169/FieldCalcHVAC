@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Low-GWP Refrigerants: The Complete Guide | FieldCalc HVAC</title>
+<meta name="description" content="Complete guide to low-GWP refrigerants. Understand what GWP means, the ASHRAE safety classifications (A1 vs A2L vs A3), the leading low-GWP options, and where the industry is heading through 2036.">
+<meta name="keywords" content="low gwp refrigerants, refrigerant gwp, gwp meaning, a2l refrigerants, ashrae classification, refrigerant safety class">
+<meta property="og:title" content="Low-GWP Refrigerants: The Complete Guide">
+<meta property="og:description" content="Understand GWP, ASHRAE safety classifications, and the leading low-GWP refrigerants shaping HVAC through 2036.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/low-gwp-refrigerants.html">
+<meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"Low-GWP Refrigerants: The Complete Guide","author":{"@type":"Organization","name":"JNPRD"},"publisher":{"@type":"Organization","name":"FieldCalc HVAC"},"datePublished":"2026-07-17"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does GWP mean for refrigerants?","acceptedAnswer":{"@type":"Answer","text":"GWP (Global Warming Potential) measures how much heat a refrigerant traps in the atmosphere compared to the same mass of CO2 over a 100-year period. CO2 has a GWP of 1 by definition. A refrigerant with GWP 2,000 is 2,000 times more warming than CO2. The AIM Act targets an 85% reduction in high-GWP HFC use by 2036."}},
+{"@type":"Question","name":"What is considered a low-GWP refrigerant?","acceptedAnswer":{"@type":"Answer","text":"There is no universal threshold, but the EPA Technology Transitions Rule effectively treats refrigerants with GWP below roughly 700 as 'low-GWP' for residential and light commercial AC. In general: GWP under 150 is very low, 150-700 is low, 700-2,500 is moderate-to-high, and above 2,500 is high. R-454B (GWP 466) and R-32 (GWP 675) qualify as low-GWP for residential AC."}},
+{"@type":"Question","name":"Are A2L refrigerants flammable?","acceptedAnswer":{"@type":"Answer","text":"A2L refrigerants are classified as 'mildly flammable' under ASHRAE Standard 34. They will burn only at high concentration in air, with a specific air-fuel ratio, and with a high-energy ignition source. They will not ignite under normal HVAC service. However, they require A2L-rated tools, clearance from ignition sources, and technician safety training. A2L is very different from A3 (highly flammable, like propane)."}},
+{"@type":"Question","name":"Why don't we just use natural refrigerants like CO2 and propane?","acceptedAnswer":{"@type":"Answer","text":"Natural refrigerants (CO2, propane, ammonia) have very low GWP but operational and safety tradeoffs. CO2 (R-744) operates at very high pressures and is inefficient in hot climates. Propane (R-290) is highly flammable (A3), limiting charge sizes in occupied spaces. Ammonia (R-717) is toxic. They are widely used in commercial and industrial applications but face practical limits in residential HVAC."}}
+]}
+</script>
+<style>
+:root{--cold:#32ADE6;--cold-dark:#0E84C7;--warm:#FF9500;--ok:#34C759;--hot:#FF453A;--bg:#0A1620;--surface:#142536;--surface2:#1B2438;--text:#E8EDF4;--text2:#9AA4BD;--text3:#5C6680;--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+.article{max-width:780px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--text3);margin-bottom:20px}.breadcrumb a{color:var(--cold);text-decoration:none}
+h1{font-size:2rem;font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{font-size:.85rem;color:var(--text3);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:1.4rem;font-weight:700;margin-top:36px;margin-bottom:12px}
+h3{font-size:1.1rem;font-weight:600;margin-top:24px;margin-bottom:8px}
+p{font-size:.95rem;color:var(--text2);margin-bottom:14px}
+strong{color:var(--text)}.lead{font-size:1.05rem;color:var(--text);margin-bottom:24px}
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--surface2);color:var(--cold);font-weight:700;padding:12px 14px;text-align:left;font-size:.82rem;letter-spacing:.5px}
+td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text2)}td:first-child{color:var(--text);font-weight:600}
+tr:hover td{background:var(--surface)}
+.cta{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--cold);border-radius:16px;padding:28px;margin:36px 0}
+.cta h3{margin-top:0;color:var(--cold)}.cta p{color:var(--text2);margin-bottom:16px}
+.cta-btn{display:inline-block;background:var(--cold);color:#051018;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{margin-top:0;font-size:1rem}.faq-item p{margin-bottom:0}
+.warning{background:rgba(255,149,0,0.08);border:1px solid rgba(255,149,0,0.25);border-radius:12px;padding:18px;margin:24px 0}
+.warning p{color:var(--text2);margin-bottom:0}.warning strong{color:var(--warm)}
+ul{margin:12px 0 14px 20px}li{font-size:.95rem;color:var(--text2);margin-bottom:6px}
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text3);margin-top:40px}
+.footer a{color:var(--cold);text-decoration:none;margin:0 8px}
+.related{margin:40px 0 0}.related h2{font-size:1.2rem;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:border-color .2s}
+.related-card:hover{border-color:var(--cold)}
+.related-card .tag{font-size:.7rem;color:var(--cold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.related-card .title{font-size:.92rem;font-weight:600;color:var(--text)}
+.related-card .desc{font-size:.82rem;color:var(--text3);margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+<article class="article">
+<div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › Low-GWP Refrigerants</div>
+<h1>Low-GWP Refrigerants: The Complete Guide</h1>
+<div class="meta">Updated July 2026 · By FieldCalc HVAC · 12 min read</div>
+<p class="lead">Every conversation about the future of HVAC comes back to one number: GWP. The EPA's AIM Act is forcing an 85% cut in high-GWP HFCs by 2036, and refrigerant selection now drives equipment design, service procedures, and code compliance. This guide explains what GWP actually measures, how the ASHRAE safety classification system works, the leading low-GWP refrigerants, and where the industry is heading.</p>
+
+<h2>What Is GWP?</h2>
+<p><strong>Global Warming Potential (GWP)</strong> measures how much heat a given mass of a substance traps in the atmosphere over a 100-year period, compared to the same mass of carbon dioxide. By definition, CO₂ has a GWP of 1.</p>
+<p>When a refrigerant leaks to the atmosphere, its warming impact is its GWP multiplied by the pounds released. A system holding 10 pounds of R-410A (GWP 2,088) has the same warming potential, if fully vented, as 20,880 pounds of CO₂ — roughly the annual emissions of two average cars.</p>
+<p>GWP is a relative measure, not a direct emissions number. It exists because refrigerants are vastly more potent greenhouse gases than CO₂, and policy needs a way to compare them on a single scale.</p>
+
+<h2>GWP Tiers</h2>
+<p>There is no single legal definition of "low-GWP," but the industry uses these rough tiers:</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>GWP Range</th><th>Classification</th><th>Examples</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>1–150</td><td>Very low</td><td>R-1234yf, R-1234ze, R-1233zd, R-290, R-744 (CO₂)</td><td>Long-term, unrestricted</td></tr>
+<tr><td>150–700</td><td>Low</td><td>R-454B (466), R-32 (675), R-452B</td><td>Allowed in new equipment through 2036+</td></tr>
+<tr><td>700–2,500</td><td>Moderate / High</td><td>R-410A (2,088), R-407C, R-134a (1,430)</td><td>Restricted from new equipment (2025+)</td></tr>
+<tr><td>2,500+</td><td>Very High</td><td>R-404A (3,922), R-507A, R-23</td><td>Restricted / phased out</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The EPA's Technology Transitions Rule doesn't use a single GWP cutoff; it sets GWP limits per sector. For residential AC, the effective limit is ~700 GWP, which is why R-454B and R-32 qualify and R-410A does not.</p>
+
+<h2>ASHRAE Safety Classification (Standard 34)</h2>
+<p>GWP tells you about climate impact. <strong>ASHRAE Standard 34</strong> tells you about safety — flammability and toxicity. Every refrigerant has a two-character safety classification: a capital letter (toxicity) and a number (flammability).</p>
+
+<h3>Toxicity (Letter)</h3>
+<ul>
+<li><strong>Class A</strong> — lower toxicity. Refrigerants that, at concentrations up to 400 ppm, do not cause adverse effects in most people.</li>
+<li><strong>Class B</strong> — higher toxicity. Refrigerants that may cause harm at lower concentrations.</li>
+</ul>
+<p>Almost all common residential HVAC refrigerants are Class A.</p>
+
+<h3>Flammability (Number)</h3>
+<ul>
+<li><strong>Class 1</strong> — no flame propagation. (R-410A, R-134a, R-22, R-1233zd.)</li>
+<li><strong>Class 2L</strong> — lower flammability, low burning velocity (&lt; 10 cm/s). (R-454B, R-32, R-1234yf.)</li>
+<li><strong>Class 2</strong> — lower flammability, higher burning velocity.</li>
+<li><strong>Class 3</strong> — higher flammability. (R-290 propane, R-600a isobutane, R-717 ammonia.)</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Class</th><th>Toxicity</th><th>Flammability</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td>A1</td><td>Lower</td><td>None</td><td>R-410A, R-134a, R-22, R-1233zd</td></tr>
+<tr><td>A2L</td><td>Lower</td><td>Mild (low velocity)</td><td>R-454B, R-32, R-1234yf, R-1234ze</td></tr>
+<tr><td>A2</td><td>Lower</td><td>Lower</td><td>R-152a</td></tr>
+<tr><td>A3</td><td>Lower</td><td>Higher</td><td>R-290 (propane), R-600a (isobutane)</td></tr>
+<tr><td>B1</td><td>Higher</td><td>None</td><td>R-123 (legacy chiller)</td></tr>
+<tr><td>B2L</td><td>Higher</td><td>Mild</td><td>R-717 (ammonia, also classified B2)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>What A2L Actually Means in Practice</h2>
+<p>A2L refrigerants are <strong>mildly flammable</strong>. They will burn, but only under very specific conditions:</p>
+<ul>
+<li>Concentration in air must be above the lower flammability limit (LFL).</li>
+<li>Air-fuel mixture must be in the flammable range.</li>
+<li>A sufficiently energetic ignition source must be present.</li>
+<li>Burning velocity is low (&lt; 10 cm/s), so flames self-extinguish easily.</li>
+</ul>
+<p>In practical HVAC service, A2L refrigerants do not ignite from a spark or static. The risk arises in enclosed spaces with significant leaks combined with high-energy ignition (e.g., open flame brazing without purge, gas furnace ignition in a small utility room). ASHRAE 15.2 (residential) and ASHRAE 15 (commercial) define the rules: minimum room volume, refrigerant charge limits, and required mitigation (ventilation, leak detection, ignition-source control) when those limits are exceeded.</p>
+
+<div class="warning">
+<p><strong>A2L is not A3.</strong> A3 refrigerants like R-290 propane are highly flammable and can ignite easily. They are restricted to very small charges (typically ≤ 150 g in U.S. residential and self-contained commercial equipment) and require special handling. Treat A2L with respect, but don't conflate it with propane.</p>
+</div>
+
+<h2>The Leading Low-GWP Refrigerants</h2>
+
+<h3>R-454B (A2L, GWP 466) — Residential AC Successor</h3>
+<p>Blend of 68.9% R-32 / 31.1% R-1234yf. The leading choice for U.S. residential AC under the AIM Act. Within 5–10% of R-410A on pressure and capacity, very low glide, POE oil. Adopted by Carrier, Trane, Lennox, Bosch, Ruud. Not a drop-in — requires purpose-built equipment. See <a href="r-454b-vs-r-410a.html" style="color:var(--cold)">R-454B vs R-410A</a>.</p>
+
+<h3>R-32 (A2L, GWP 675) — Global Standard</h3>
+<p>Single-component refrigerant (difluoromethane), zero glide, higher capacity than R-454B. Used widely in mini-splits and is the residential AC standard in India, Japan, China, and much of Europe. Higher discharge temperature than R-410A — requires compressor design accommodations. Growing in U.S. residential.</p>
+
+<h3>R-1234yf (A2L, GWP &lt; 1) — Auto AC and Blend Component</h3>
+<p>An HFO refrigerant with essentially zero GWP. Standard for new car air conditioning worldwide. Also a component of R-454B. Used in some commercial AC and refrigeration as a low-GWP alternative to R-134a.</p>
+
+<h3>R-1234ze(E) (A2L, GWP 7) — Chillers</h3>
+<p>Low-pressure HFO. Replaces R-134a in centrifugal and screw chillers. Operating pressures and capacity close to R-134a with ~99.5% lower GWP.</p>
+
+<h3>R-1233zd(E) (A1, GWP 1) — Low-Pressure Chillers</h3>
+<p>HCFO refrigerant, non-flammable (A1). Direct replacement for R-123 in centrifugal chillers. Very low GWP with no flammability concerns — a favorite for chiller retrofits.</p>
+
+<h3>R-290 / Propane (A3, GWP 3) — Self-Contained Refrigeration</h3>
+<p>Natural refrigerant with excellent thermodynamic properties. EPA approved in 2025 for self-contained commercial refrigeration with strict charge limits. Highly flammable — installations must follow specific safety codes. Niche for HVAC techs but central to commercial refrigeration.</p>
+
+<h3>R-744 / CO₂ (A1, GWP 1) — Transcritical Refrigeration and Heat Pumps</h3>
+<p>Natural refrigerant, non-flammable, very low GWP. Used in transcritical supermarket systems (common in Europe) and in some commercial heat pumps. Operates at very high pressures (1,000+ psig) and is inefficient in hot climates without special controls.</p>
+
+<h3>R-717 / Ammonia (B2L, GWP 0) — Industrial Refrigeration</h3>
+<p>The industrial refrigeration standard. Excellent thermodynamics and zero GWP, but toxic and mildly flammable (B2L). Restricted to industrial applications with dedicated safety systems.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Refrigerant</th><th>GWP</th><th>Class</th><th>Primary Use</th><th>Service Notes</th></tr></thead>
+<tbody>
+<tr><td>R-454B</td><td>466</td><td>A2L</td><td>Residential AC</td><td>Similar to R-410A; A2L safety rules</td></tr>
+<tr><td>R-32</td><td>675</td><td>A2L</td><td>Residential AC, mini-split</td><td>Higher discharge temps; A2L safety</td></tr>
+<tr><td>R-1234yf</td><td>1</td><td>A2L</td><td>Auto AC, blend component</td><td>A2L; expensive</td></tr>
+<tr><td>R-1234ze</td><td>7</td><td>A2L</td><td>Centrifugal/screw chillers</td><td>Low pressure; chiller-specific</td></tr>
+<tr><td>R-1233zd</td><td>1</td><td>A1</td><td>Low-pressure chillers</td><td>Non-flammable retrofit for R-123</td></tr>
+<tr><td>R-290</td><td>3</td><td>A3</td><td>Self-contained refrigeration</td><td>Strict charge limits; A3 safety</td></tr>
+<tr><td>R-744 (CO₂)</td><td>1</td><td>A1</td><td>Transcritical ref/heat pumps</td><td>Very high pressures</td></tr>
+<tr><td>R-717 (NH₃)</td><td>0</td><td>B2L</td><td>Industrial refrigeration</td><td>Toxic; specialized systems</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Why Not Just Use Natural Refrigerants Everywhere?</h2>
+<p>If GWP is the only criterion, natural refrigerants (CO₂, propane, ammonia) win. So why do synthetic HFOs and blends like R-454B dominate residential AC? Because each natural refrigerant has tradeoffs that disqualify it for the residential use case:</p>
+<ul>
+<li><strong>CO₂ (R-744):</strong> inefficient above ~85°F ambient without complex transcritical controls; very high operating pressures require specialized components.</li>
+<li><strong>Propane (R-290):</strong> highly flammable (A3). U.S. charge limits (~150 g, being expanded) are too small for full-size residential AC.</li>
+<li><strong>Ammonia (R-717):</strong> toxic (B2L/B2). Unsuitable for occupied residential spaces.</li>
+<li><strong>Water (R-718):</strong> works only at very low pressure (vacuum), requires enormous compressors, impractical for residential.</li>
+</ul>
+<p>So engineers designed synthetic HFOs and HFO-HFC blends that mimic the safety and performance of R-410A while dramatically reducing GWP. R-454B and R-32 are the result — not perfect, but a practical compromise.</p>
+
+<div class="cta">
+<h3>📱 Carry every PT chart in your pocket</h3>
+<p>FieldCalc HVAC includes PT charts for R-410A, R-454B, R-32, R-134a, R-1234yf, and dozens more — plus superheat, subcooling, and target-charging tools. Works offline.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+</div>
+
+<h2>What This Means for Technicians</h2>
+<ul>
+<li><strong>Learn A2L handling.</strong> Most new residential AC you install from 2025 onward will be A2L. Get OEM safety training.</li>
+<li><strong>Upgrade tools.</strong> A2L-rated manifolds, hoses, leak detectors, and recovery equipment. See our <a href="hvac-tools-list.html" style="color:var(--cold)">tools list</a>.</li>
+<li><strong>Use separate recovery cylinders</strong> for each refrigerant to prevent cross-contamination.</li>
+<li><strong>Stay current on codes.</strong> ASHRAE 15 and 15.2 are being revised and adopted locally; new installs may require leak detection or ventilation mitigation.</li>
+<li><strong>Keep your EPA 608 certification active.</strong> The rules extend to HFCs and HFOs — see our <a href="epa-608-certification.html" style="color:var(--cold)">608 guide</a>.</li>
+</ul>
+
+<h2>The Long-Term Outlook (2030–2040)</h2>
+<p>Through 2036, R-454B and R-32 are the residential AC refrigerants. Beyond that, expect pressure to drive GWP even lower:</p>
+<ul>
+<li><strong>R-466A</strong> and other ultra-low-GWP A2L/A1 blends are in development.</li>
+<li><strong>Propane (R-290)</strong> charge limits are being expanded by UL and ASHRAE; expect more R-290 in self-contained commercial and possibly small split systems.</li>
+<li><strong>CO₂ heat pumps</strong> are gaining traction in cold-climate residential heating.</li>
+<li><strong>HFOs and HCFOs</strong> (R-1234yf, R-1234ze, R-1233zd) will dominate chiller and commercial applications.</li>
+</ul>
+<p>Expect another generation of refrigerant changes in the 2030s as the AIM Act caps tighten and GWP limits drop further. The contractors who build fluency in refrigerant properties, safety classes, and service procedures now will be ready for whatever comes next.</p>
+
+<h2>Putting It All Together</h2>
+<p>GWP is the single number driving HVAC's next decade. ASHRAE 34's safety classification tells you how to handle each refrigerant. For most U.S. residential techs, that means: <strong>A2L is the new normal.</strong> Get trained, upgrade your tools, keep recovery cylinders segregated, and carry a current PT chart. Do that and the transition is manageable — even an opportunity to differentiate from competitors who haven't bothered.</p>
+
+<div class="cta" style="padding:20px">
+<h3 style="font-size:1.05rem;margin-bottom:8px">Every refrigerant, one app</h3>
+<p style="margin-bottom:12px">PT charts for R-410A, R-454B, R-32, R-1234yf, and dozens more — always current, offline-ready.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740" style="padding:12px 24px">Get FieldCalc HVAC →</a>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>What does GWP mean for refrigerants?</h3><p>GWP (Global Warming Potential) measures how much heat a refrigerant traps compared to CO₂ over 100 years. CO₂ has GWP 1. A refrigerant with GWP 2,000 is 2,000 times more warming than CO₂. The AIM Act targets an 85% reduction in high-GWP HFC use by 2036.</p></div>
+<div class="faq-item"><h3>What is considered a low-GWP refrigerant?</h3><p>There's no universal threshold, but the EPA effectively treats refrigerants under ~700 GWP as low-GWP for residential AC. Tiers: under 150 very low, 150–700 low, 700–2,500 moderate-to-high, above 2,500 very high. R-454B (466) and R-32 (675) qualify.</p></div>
+<div class="faq-item"><h3>Are A2L refrigerants flammable?</h3><p>A2L is "mildly flammable" under ASHRAE 34. They burn only at high concentration, with the right air-fuel mix, and a high-energy ignition source. They will not ignite under normal service. They require A2L-rated tools, clearance from ignition sources, and safety training — but are very different from A3 (highly flammable) like propane.</p></div>
+<div class="faq-item"><h3>Why don't we just use natural refrigerants like CO₂ and propane?</h3><p>Each has tradeoffs. CO₂ operates at very high pressures and is inefficient in hot climates. Propane is highly flammable (A3), limiting charge sizes. Ammonia is toxic. They're widely used commercially but face practical limits in residential HVAC, which is why synthetic HFO blends like R-454B were developed.</p></div>
+
+<div class="related">
+<h2>Related Guides</h2>
+<div class="related-grid">
+<a class="related-card" href="r-454b-vs-r-410a.html"><div class="tag">Refrigerant</div><div class="title">R-454B vs R-410A</div><div class="desc">Property comparison for the leading low-GWP option.</div></a>
+<a class="related-card" href="refrigerant-transition-2025.html"><div class="tag">Regulation</div><div class="title">Refrigerant Transition 2025–2036</div><div class="desc">The full HFC phase-down roadmap.</div></a>
+<a class="related-card" href="epa-608-certification.html"><div class="tag">Certification</div><div class="title">EPA 608 Certification</div><div class="desc">Required credential for handling any refrigerant.</div></a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="index.html">Guides</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></p>
+<p style="margin-top:8px;">Field reference only — follow ASHRAE 34/15/15.2, EPA regulations, and local codes.</p>
+</div>
+</article>
+</body>
+</html>

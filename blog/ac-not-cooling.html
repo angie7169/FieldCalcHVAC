@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AC Not Cooling? 10 Most Common Causes &amp; Fixes | FieldCalc HVAC</title>
+<meta name="description" content="HVAC tech's guide to the 10 most common reasons an air conditioner stops cooling — from dirty filters and low charge to TXV failures and compressor problems. Step-by-step diagnosis.">
+<meta name="keywords" content="ac not cooling, air conditioner not cooling, ac not cold, hvac troubleshooting, ac troubleshooting guide">
+<meta property="og:title" content="AC Not Cooling? 10 Most Common Causes & Fixes">
+<meta property="og:description" content="Step-by-step diagnosis for the 10 most common AC cooling problems.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/ac-not-cooling.html">
+<meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_02_superheat.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"AC Not Cooling? 10 Most Common Causes & Fixes","author":{"@type":"Organization","name":"JNPRD"},"publisher":{"@type":"Organization","name":"FieldCalc HVAC"},"datePublished":"2026-07-17"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Why is my AC running but not cooling?","acceptedAnswer":{"@type":"Answer","text":"The most common causes are: dirty air filter, low refrigerant charge, dirty condenser coil, frozen evaporator coil, or a faulty compressor. Start by checking the filter and condenser airflow, then check superheat/subcooling."}},
+{"@type":"Question","name":"How do I know if my AC is low on refrigerant?","acceptedAnswer":{"@type":"Answer","text":"Signs of low charge: warm supply air, high superheat, low subcooling, frozen suction line, hissing sounds, or higher-than-normal evaporator temperature. Verify with manifold gauges and a superheat/subcooling calculation."}},
+{"@type":"Question","name":"Can a dirty filter cause AC to stop cooling?","acceptedAnswer":{"@type":"Answer","text":"Yes. A clogged filter restricts airflow across the evaporator coil, which reduces heat transfer and can cause the coil to freeze. Once frozen, the AC stops cooling entirely. Always check airflow first (ABC: Airflow Before Charge)."}}
+]}
+</script>
+<style>
+:root{--cold:#32ADE6;--cold-dark:#0E84C7;--warm:#FF9500;--ok:#34C759;--hot:#FF453A;--bg:#0A1620;--surface:#142536;--surface2:#1B2438;--text:#E8EDF4;--text2:#9AA4BD;--text3:#5C6680;--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+.article{max-width:780px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--text3);margin-bottom:20px}.breadcrumb a{color:var(--cold);text-decoration:none}
+h1{font-size:2rem;font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{font-size:.85rem;color:var(--text3);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:1.4rem;font-weight:700;margin-top:36px;margin-bottom:12px}
+h3{font-size:1.1rem;font-weight:600;margin-top:24px;margin-bottom:8px}
+p{font-size:.95rem;color:var(--text2);margin-bottom:14px}
+strong{color:var(--text)}.lead{font-size:1.05rem;color:var(--text);margin-bottom:24px}
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--surface2);color:var(--cold);font-weight:700;padding:12px 14px;text-align:left;font-size:.82rem;letter-spacing:.5px}
+td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text2)}td:first-child{color:var(--text);font-weight:600}
+tr:hover td{background:var(--surface)}
+.cause-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.cause-card .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--cold);color:#051018;border-radius:50%;font-weight:800;font-size:.9rem;margin-right:10px;vertical-align:middle}
+.cause-card h3{display:inline;font-size:1.1rem;color:var(--text)}
+.cause-card .fix{margin-top:10px;padding:10px 14px;background:rgba(52,199,89,0.08);border-left:3px solid var(--ok);border-radius:6px;font-size:.88rem;color:var(--text2)}
+.cause-card .fix strong{color:var(--ok)}
+.cta{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--cold);border-radius:16px;padding:28px;margin:36px 0}
+.cta h3{margin-top:0;color:var(--cold)}.cta p{color:var(--text2);margin-bottom:16px}
+.cta-btn{display:inline-block;background:var(--cold);color:#051018;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{margin-top:0;font-size:1rem}.faq-item p{margin-bottom:0}
+.warning{background:rgba(255,149,0,0.08);border:1px solid rgba(255,149,0,0.25);border-radius:12px;padding:18px;margin:24px 0}
+.warning p{color:var(--text2);margin-bottom:0}.warning strong{color:var(--warm)}
+ul{margin:12px 0 14px 20px}li{font-size:.95rem;color:var(--text2);margin-bottom:6px}
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text3);margin-top:40px}
+.footer a{color:var(--cold);text-decoration:none;margin:0 8px}
+.related{margin:40px 0 0}.related h2{font-size:1.2rem;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:border-color .2s}
+.related-card:hover{border-color:var(--cold)}
+.related-card .tag{font-size:.7rem;color:var(--cold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.related-card .title{font-size:.92rem;font-weight:600;color:var(--text)}
+.related-card .desc{font-size:.82rem;color:var(--text3);margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+<article class="article">
+<div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › AC Not Cooling</div>
+<h1>AC Not Cooling? 10 Most Common Causes &amp; Fixes</h1>
+<div class="meta">Updated July 2026 · By FieldCalc HVAC · 10 min read</div>
+<p class="lead">"The AC is running but the house won't cool down." It's the most common service call in HVAC. This guide walks through the <strong>10 most likely causes</strong> — in the order you should check them — so you can diagnose and fix the problem fast. Remember the golden rule: <strong>ABC — Airflow Before Charge.</strong> Always verify airflow before touching refrigerant.</p>
+
+<h2>The Diagnosis Checklist (In Order)</h2>
+<p>Follow this sequence. Most no-cooling calls are solved in the first three steps.</p>
+
+<div class="cause-card">
+<span class="num">1</span><h3>Dirty Air Filter</h3>
+<p>The #1 cause. A clogged filter starves the evaporator of air, reducing heat transfer. In severe cases, the coil freezes and cooling stops entirely.</p>
+<div class="fix"><strong>Fix:</strong> Replace the filter. Check that supply and return airflow feels balanced. If the coil is frozen, let it thaw completely before restarting.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">2</span><h3>Dirty or Blocked Condenser Coil</h3>
+<p>The outdoor unit can't reject heat if the coil is clogged with dirt, grass, or debris. Head pressure rises, capacity drops, and the system may trip on high-pressure safety.</p>
+<div class="fix"><strong>Fix:</strong> Clean the condenser coil with a garden hose and coil cleaner. Trim vegetation at least 2 feet away from the unit.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">3</span><h3>Low Refrigerant Charge (Leak)</h3>
+<p>If airflow is fine but the system still underperforms, check charge. Low charge means a leak — systems don't "consume" refrigerant.</p>
+<div class="fix"><strong>Fix:</strong> Connect gauges, check <a href="how-to-check-superheat.html" style="color:var(--cold)">superheat</a> and <a href="how-to-check-subcooling.html" style="color:var(--cold)">subcooling</a>. If charge is low, find and repair the leak before adding refrigerant. Never just "top off" — it will leak again.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">4</span><h3>Frozen Evaporator Coil</h3>
+<p>Caused by low airflow (dirty filter, weak blower) or low charge. Ice insulates the coil, blocking heat transfer. If you see frost on the suction line, the coil is likely frozen.</p>
+<div class="fix"><strong>Fix:</strong> Turn off cooling, switch fan to ON to thaw. Check filter, blower motor, and evaporator coil cleanliness. Then verify charge. See our <a href="evaporator-coil-freezing.html" style="color:var(--cold)">evaporator coil freezing guide</a> for details.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">5</span><h3>Faulty or Misadjusted TXV / EEV</h3>
+<p>The metering device controls refrigerant flow into the evaporator. If it sticks closed, the evaporator starves (high superheat). If it overfeeds, the compressor can slug liquid (low superheat).</p>
+<div class="fix"><strong>Fix:</strong> Check superheat against target. If superheat is way off and charge is correct, the TXV bulb may be loose, the valve may be restricted, or the sensing bulb is poorly clamped.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">6</span><h3>Bad Capacitor</h3>
+<p>The run or start capacitor weakens over time. The compressor or fan may hum but not start, or run sluggishly. A common failure on hot days.</p>
+<div class="fix"><strong>Fix:</strong> Test capacitance with a multimeter. If reading is more than 10% below the rated value, replace. Always discharge capacitors before handling.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">7</span><h3>Weak or Failed Contactor</h3>
+<p>The contactor switches power to the compressor and condenser fan. Pitted or burnt contacts cause intermittent operation — the unit may short-cycle or not start at all.</p>
+<div class="fix"><strong>Fix:</strong> Inspect contacts for pitting/burning. Check for 24V at the coil. Replace if contacts are worn or the coil isn't pulling in.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">8</span><h3>Reversing Valve Leak (Heat Pumps)</h3>
+<p>In heat pumps, a leaking reversing valve lets high-side gas bleed into the low side, reducing capacity in both heating and cooling. The valve may also be stuck between positions.</p>
+<div class="fix"><strong>Fix:</strong> Check temperature difference across the valve body. If discharge gas is bypassing, the valve needs replacement.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">9</span><h3>Compressor Failure</h3>
+<p>The compressor may be shorted to ground, open winding, or mechanically seized (valve plate failure). The unit hums but doesn't pump, or trips the breaker immediately.</p>
+<div class="fix"><strong>Fix:</strong> Check winding resistance and continuity to ground. If windings are open or shorted, the compressor must be replaced. For mechanical failure, compare amp draw and discharge temperature to specs.</div>
+</div>
+
+<div class="cause-card">
+<span class="num">10</span><h3>Undersized or Aging System</h3>
+<p>If all mechanical checks pass but the space still won't reach setpoint, the system may be undersized, ductwork may be leaky, or the unit is at end of life with degraded capacity.</p>
+<div class="fix"><strong>Fix:</strong> Measure delivered CFM vs <a href="hvac-load-calculation.html" style="color:var(--cold)">load calculation</a>. Check duct integrity. If the unit is 15+ years old, capacity may have dropped 10-20% — consider replacement.</div>
+</div>
+
+<div class="cta">
+<h3>📱 Diagnose faster in the field</h3>
+<p>FieldCalc HVAC calculates superheat, subcooling, and load — giving you the numbers to diagnose charge and capacity issues in seconds. Works offline.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+</div>
+
+<h2>Quick Diagnostic Flowchart</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Step</th><th>Check</th><th>If Problem → Go To</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Filter dirty?</td><td>→ Cause #1 (replace filter)</td></tr>
+<tr><td>2</td><td>Condenser blocked?</td><td>→ Cause #2 (clean coil)</td></tr>
+<tr><td>3</td><td>Coil frozen?</td><td>→ Cause #4 (thaw, check airflow)</td></tr>
+<tr><td>4</td><td>Superheat/subcooling off?</td><td>→ Cause #3 (leak) or #5 (TXV)</td></tr>
+<tr><td>5</td><td>Compressor not running?</td><td>→ Cause #6 (cap) or #7 (contactor)</td></tr>
+<tr><td>6</td><td>All checks pass, still warm?</td><td>→ Cause #10 (size/age)</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>Why is my AC running but not cooling?</h3><p>The most common causes: dirty filter, low refrigerant, dirty condenser, frozen evaporator, or a faulty compressor. Always check airflow first (ABC: Airflow Before Charge).</p></div>
+<div class="faq-item"><h3>How do I know if my AC is low on refrigerant?</h3><p>Warm supply air, high superheat, low subcooling, frozen suction line, hissing sounds, or higher evaporator temperature. Verify with gauges.</p></div>
+<div class="faq-item"><h3>Can a dirty filter cause AC to stop cooling?</h3><p>Yes — it starves the evaporator, reduces heat transfer, and can freeze the coil. Always check the filter first.</p></div>
+
+<div class="related">
+<h2>Related Guides</h2>
+<div class="related-grid">
+<a class="related-card" href="how-to-check-superheat.html"><div class="tag">Tutorial</div><div class="title">How to Check Superheat</div><div class="desc">Verify charge — step 4 of diagnosis.</div></a>
+<a class="related-card" href="how-to-check-subcooling.html"><div class="tag">Tutorial</div><div class="title">How to Check Subcooling</div><div class="desc">Companion charge check for TXV systems.</div></a>
+<a class="related-card" href="evaporator-coil-freezing.html"><div class="tag">Diagnosis</div><div class="title">Evaporator Coil Freezing</div><div class="desc">Deep dive on cause #4.</div></a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="index.html">Guides</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></p>
+<p style="margin-top:8px;">Field reference only — follow OEM specifications and local codes.</p>
+</div>
+</article>
+</body>
+</html>

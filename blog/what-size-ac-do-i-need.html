@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Size AC Do I Need? BTU Sizing Guide (2026) | FieldCalc HVAC</title>
+<meta name="description" content="Complete guide to sizing an air conditioner by square footage and BTU. Learn the Manual J simplified method, ton sizing, and what factors change AC capacity requirements.">
+<meta name="keywords" content="what size ac do i need, ac size calculator, how many btu do i need, ac sizing, air conditioner size, ton sizing">
+<meta property="og:title" content="What Size AC Do I Need? BTU Sizing Guide">
+<meta property="og:description" content="How to size an AC unit — BTU per sqft, ton conversion, climate factors, and Manual J simplified.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://angie7169.github.io/FieldCalcHVAC/blog/what-size-ac-do-i-need.html">
+<meta property="og:image" content="https://angie7169.github.io/FieldCalcHVAC/images/gallery/ph_05_load.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"What Size AC Do I Need? BTU Sizing Guide","author":{"@type":"Organization","name":"JNPRD"},"publisher":{"@type":"Organization","name":"FieldCalc HVAC"},"datePublished":"2026-07-17"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How many square feet will a 2-ton AC cool?","acceptedAnswer":{"@type":"Answer","text":"A 2-ton AC (24,000 BTU/h) typically cools 800-1,200 sqft, depending on climate, insulation, and exposure. In hot climates with poor insulation, it may only cover 700 sqft; in mild climates with good insulation, up to 1,200 sqft."}},
+{"@type":"Question","name":"How do I calculate what size AC I need?","acceptedAnswer":{"@type":"Answer","text":"Multiply your conditioned square footage by a BTU/sqft factor (20-35 depending on climate), then add corrections for windows, people, and appliances. Divide the total by 12,000 to get tons. This simplified Manual J method is for estimates — full Manual J software is needed for equipment selection."}},
+{"@type":"Question","name":"Is it bad to oversize an air conditioner?","acceptedAnswer":{"@type":"Answer","text":"Yes. Oversized ACs short-cycle (cool too fast then shut off), which causes poor dehumidification, temperature swings, higher energy bills, and premature compressor wear. Always size to the actual load, not 'bigger is better.'"}}
+]}
+</script>
+<style>
+:root{--cold:#32ADE6;--cold-dark:#0E84C7;--warm:#FF9500;--ok:#34C759;--hot:#FF453A;--bg:#0A1620;--surface:#142536;--surface2:#1B2438;--text:#E8EDF4;--text2:#9AA4BD;--text3:#5C6680;--border:rgba(255,255,255,0.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+.article{max-width:780px;margin:0 auto;padding:40px 24px 80px}
+.breadcrumb{font-size:.82rem;color:var(--text3);margin-bottom:20px}.breadcrumb a{color:var(--cold);text-decoration:none}
+h1{font-size:2rem;font-weight:800;line-height:1.25;margin-bottom:12px}
+.meta{font-size:.85rem;color:var(--text3);margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+h2{font-size:1.4rem;font-weight:700;margin-top:36px;margin-bottom:12px}
+h3{font-size:1.1rem;font-weight:600;margin-top:24px;margin-bottom:8px}
+p{font-size:.95rem;color:var(--text2);margin-bottom:14px}
+strong{color:var(--text)}.lead{font-size:1.05rem;color:var(--text);margin-bottom:24px}
+.table-wrap{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{background:var(--surface2);color:var(--cold);font-weight:700;padding:12px 14px;text-align:left;font-size:.82rem;letter-spacing:.5px}
+td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text2)}td:first-child{color:var(--text);font-weight:600}
+.formula-box{background:var(--surface);border:1px solid var(--warm);border-radius:12px;padding:24px;margin:24px 0;text-align:center}
+.formula-box .formula{font-family:'SF Mono',Monaco,monospace;font-size:1.15rem;color:var(--warm);font-weight:600}
+.formula-box .note{font-size:.82rem;color:var(--text3);margin-top:10px;margin-bottom:0}
+.example-box{background:var(--surface);border-left:4px solid var(--ok);border-radius:8px;padding:20px;margin:24px 0}
+.example-box h3{margin-top:0;color:var(--ok)}
+.example-box .calc{font-family:'SF Mono',Monaco,monospace;font-size:.92rem;color:var(--text);background:var(--bg);padding:12px;border-radius:8px;margin-top:10px;line-height:1.8}
+.cta{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--cold);border-radius:16px;padding:28px;margin:36px 0}
+.cta h3{margin-top:0;color:var(--cold)}.cta p{color:var(--text2);margin-bottom:16px}
+.cta-btn{display:inline-block;background:var(--cold);color:#051018;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.faq-item h3{margin-top:0;font-size:1rem}.faq-item p{margin-bottom:0}
+.warning{background:rgba(255,149,0,0.08);border:1px solid rgba(255,149,0,0.25);border-radius:12px;padding:18px;margin:24px 0}
+.warning p{color:var(--text2);margin-bottom:0}.warning strong{color:var(--warm)}
+ul{margin:12px 0 14px 20px}li{font-size:.95rem;color:var(--text2);margin-bottom:6px}
+.footer{text-align:center;padding:24px;border-top:1px solid var(--border);font-size:.82rem;color:var(--text3);margin-top:40px}
+.footer a{color:var(--cold);text-decoration:none;margin:0 8px}
+.related{margin:40px 0 0}.related h2{font-size:1.2rem;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.related-card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;transition:border-color .2s}
+.related-card:hover{border-color:var(--cold)}
+.related-card .tag{font-size:.7rem;color:var(--cold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.related-card .title{font-size:.92rem;font-weight:600;color:var(--text)}
+.related-card .desc{font-size:.82rem;color:var(--text3);margin-top:4px;line-height:1.4}
+</style>
+</head>
+<body>
+<article class="article">
+<div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Guides</a> › What Size AC Do I Need</div>
+<h1>What Size AC Do I Need? BTU Sizing Guide</h1>
+<div class="meta">Updated July 2026 · By FieldCalc HVAC · 8 min read</div>
+<p class="lead">Whether you're replacing an old unit or sizing new construction, picking the right AC size matters more than any other decision. Too small and it can't keep up; too big and it short-cycles, dehumidifies poorly, and wastes money. This guide gives you a simple field method — the BTU/sqft rule — plus the factors that change the answer.</p>
+
+<h2>The Quick Answer: BTU per Square Foot</h2>
+<p>The fastest way to estimate AC size is to multiply conditioned floor area by a climate-based BTU/sqft factor:</p>
+<div class="formula-box">
+<div class="formula">Tons = (Area × BTU/sqft ÷ 12,000)</div>
+<p class="note">12,000 BTU/h = 1 ton of cooling</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Climate / Exposure</th><th>BTU/sqft</th><th>Example Region</th></tr></thead>
+<tbody>
+<tr><td>Cool climate, well-shaded</td><td>20</td><td>Pacific Northwest, basement</td></tr>
+<tr><td>Mild climate</td><td>25</td><td>Mid-Atlantic, ground floor</td></tr>
+<tr><td>Hot climate, west-facing</td><td>30</td><td>Southeast US</td></tr>
+<tr><td>Top floor / hot / poor insulation</td><td>35</td><td>Southwest, attic</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Quick Reference: Tons by Square Footage</h2>
+<p>For a typical mild-to-hot climate (25-30 BTU/sqft):</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Area (sqft)</th><th>Recommended Tons</th><th>BTU/h</th></tr></thead>
+<tbody>
+<tr><td>400-600</td><td>1.5 ton</td><td>18,000</td></tr>
+<tr><td>600-900</td><td>2 ton</td><td>24,000</td></tr>
+<tr><td>900-1,200</td><td>2.5 ton</td><td>30,000</td></tr>
+<tr><td>1,200-1,600</td><td>3 ton</td><td>36,000</td></tr>
+<tr><td>1,600-2,000</td><td>3.5 ton</td><td>42,000</td></tr>
+<tr><td>2,000-2,500</td><td>4 ton</td><td>48,000</td></tr>
+<tr><td>2,500-3,000+</td><td>5 ton</td><td>60,000</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:.82rem;color:var(--text3);">Estimates for average insulation. Always verify with a proper <a href="hvac-load-calculation.html" style="color:var(--cold)">load calculation</a>.</p>
+
+<div class="example-box">
+<h3>Example: 1,500 sqft home in Florida</h3>
+<div class="calc">
+Hot climate, west-facing: 30 BTU/sqft<br>
+1,500 × 30 = 45,000 BTU/h<br>
+Add: 8 windows (+8,000) + 4 people (+1,600) + 3 appliances (+1,500)<br>
+Subtotal: 56,100 BTU/h<br>
+Insulation credit (×0.85): 47,685 BTU/h<br>
+Tons: 47,685 ÷ 12,000 = 3.97 → <strong>4 ton unit</strong>
+</div>
+</div>
+
+<h2>Factors That Change AC Size</h2>
+<ul>
+<li><strong>Climate &amp; design temp</strong> — hotter regions need more tons per sqft</li>
+<li><strong>Insulation quality</strong> — R-30 roof/R-13 walls cut load by ~15%</li>
+<li><strong>Windows</strong> — each standard window adds ~1,000 BTU/h (west-facing worse)</li>
+<li><strong>Ceiling height</strong> — vaulted ceilings increase conditioned volume</li>
+<li><strong>Occupants &amp; appliances</strong> — people add 400 BTU/h; major appliances 500 BTU/h each</li>
+<li><strong>Duct losses</strong> — leaky ducts in attics can add 20-30% to capacity needs</li>
+<li><strong>Sun exposure</strong> — west-facing walls and large unshaded windows increase load</li>
+</ul>
+
+<h2>Why Oversizing Is Bad</h2>
+<div class="warning">
+<p><strong>⚠️ Bigger is NOT better.</strong> Oversized units cool the space too quickly, then shut off (short cycling). Consequences: poor dehumidification (clammy air), temperature swings, higher bills, and premature compressor wear. Always size to the actual load.</p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq-item"><h3>How many square feet will a 2-ton AC cool?</h3><p>Typically 800-1,200 sqft, depending on climate and insulation. In hot climates, maybe 700 sqft; in mild climates, up to 1,200.</p></div>
+<div class="faq-item"><h3>How do I calculate what size AC I need?</h3><p>Multiply sqft by BTU/sqft factor (20-35 by climate), add corrections for windows/people/appliances, divide by 12,000 to get tons. For exact sizing, use full Manual J software.</p></div>
+<div class="faq-item"><h3>Is it bad to oversize an air conditioner?</h3><p>Yes — short cycling, poor dehumidification, temperature swings, higher bills, and compressor wear. Size to actual load.</p></div>
+
+<div class="cta">
+<h3>📱 Size it right the first time</h3>
+<p>FieldCalc HVAC runs the full simplified Manual J calc — enter area, climate, windows, people. Get BTU/h, tons, and recommended unit size. Works offline.</p>
+<a class="cta-btn" href="https://apps.apple.com/us/app/fieldcalc-hvac/id6784082740">Download Free →</a>
+</div>
+
+<div class="related">
+<h2>Related Guides</h2>
+<div class="related-grid">
+<a class="related-card" href="hvac-load-calculation.html"><div class="tag">Guide</div><div class="title">HVAC Load Calculation</div><div class="desc">The full Manual J simplified method behind this guide.</div></a>
+<a class="related-card" href="duct-sizing-calculator.html"><div class="tag">Guide</div><div class="title">Duct Sizing Calculator</div><div class="desc">Once you know the tonnage, size the ductwork.</div></a>
+<a class="related-card" href="how-to-choose-hvac-system.html"><div class="tag">Guide</div><div class="title">How to Choose an HVAC System</div><div class="desc">System types, efficiency, and matching to load.</div></a>
+</div>
+</div>
+
+<div class="footer">
+<p>© 2026 JNPRD · <a href="../index.html">Home</a> · <a href="index.html">Guides</a> · <a href="../privacy.html">Privacy</a></p>
+<p style="margin-top:8px;">Field reference only — perform full Manual J for equipment selection.</p>
+</div>
+</article>
+</body>
+</html>
